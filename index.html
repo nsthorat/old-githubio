@@ -1,0 +1,218 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
+<script type="text/javascript">
+  // Mapping of letters to their array of vectors.
+  // Each value is an array of line segments defined by a [x1, y2, x2, y2] tuple.
+  // 0, 0 is top-left, 1, 1 is bottom right
+  let letterVectors = {
+    "N": {
+      width: .8,
+      vectors: [
+        {type: 'line', start: {x: .15, y: 1}, end: {x: .15, y: 0}},
+        {type: 'line', start: {x: .15, y: 0}, end: {x: .85, y: 1}},
+        {type: 'line', start: {x: .85, y: 1}, end: {x: .85, y: 0}}]
+    },
+    "i": {
+      width: .2,
+      vectors: [
+        {type: 'line', start: {x: .5, y: 1}, end: {x: .5, y: .6}},
+        {type: 'line', start: {x: .5, y: .3}, end: {x: .5, y: .28}}],
+    },
+    "k" : {
+      width: .4,
+      vectors : [
+        {type: 'line', start: {x: .15, y: 1}, end: {x: .15, y: 0}},
+        {type: 'line', start: {x: .15, y: .6}, end: {x: 1, y: .3}},
+        {type: 'line', start: {x: .15, y: .6}, end: {x: 1, y: 1}}]
+    },
+    "h" : {
+      width: .5,
+      vectors : [
+        {type: 'line', start: {x: .15, y: 1}, end: {x: .15, y: 0}},
+        // arcs
+        {type: 'arc', x: .45, y: .65, r: .3},
+        {type: 'line', start: {x: .75, y: .65}, end: {x: .75, y: 1}},
+      ]
+    },
+    "l": {
+      width: .2,
+      vectors: [
+        {type: 'line', start: {x: .5, y: 1}, end: {x: .5, y: 0}}],
+    }
+  };
+
+  let word = "Nikhil";
+
+  // Count total vectors, assume same length.
+  let totalLength = 0;
+  let totalWidth = 0;
+  for (let j = 0; j < word.length; j++) {
+    totalLength += letterVectors[word[j]].vectors.length
+    totalWidth += letterVectors[word[j]].width;
+  }
+
+  // Constants.
+  let usableWidth = Math.min(window.innerWidth, 800);
+  let usableHeight = Math.min(window.innerHeight, 600);
+  let centerShift = {'x': window.innerWidth / 2 - usableWidth / 2, 'y': window.innerHeight / 2 - usableHeight / 2};
+
+  //
+  let ballCount = 2000;
+  let ballSize = 5;
+  let ballCountPerPath = ballCount / totalLength;
+  // How often to put balls
+  let ballRate = 4;
+  let wiggle = 0;
+
+  // How width values scale for letters.
+  let letterWidth = usableWidth / totalWidth;
+  let letterHeight = letterWidth;
+
+  let canvasWidth = 2000;
+  let canvasHeight = 200;
+
+  // Globals.
+  let balls = [];
+
+  $(document).ready(function () {
+    // Size balls.
+    $("#balls").width(window.innerWidth).height(window.innerHeight);
+    // Create the balls in their initial position
+    for (let i = 0; i < ballCount; i++) {
+      let ball = $("<div class='ball'></div>");
+      $("#balls").append(ball);
+
+      // Make this better
+      ball.css({
+        "top": window.innerHeight - Math.random() * 20,
+        "left": Math.random() * window.innerWidth
+      });
+      balls.push(ball);
+    }
+
+    setTimeout(paint, 2000);
+  });
+
+  function paint() {
+    let canvas = $("#test-vectors");
+    let context = canvas[0].getContext("2d");
+
+    var accWidth = 0;
+    var ballIndex = 0;
+    for (let i = 0; i < word.length; i++) {
+      let letter = word[i];
+      let vectors = letterVectors[letter].vectors;
+
+      for (let j = 0; j < vectors.length; j++) {
+        let vector = vectors[j];
+
+        context.lineWidth = "6";
+        context.beginPath();
+        if (vector.type == 'line') {
+          let start = {
+            'x' : accWidth * letterWidth + letterVectors[letter].width * letterWidth * scaleToPadding(.05, vector.start.x),
+            'y': letterHeight * scaleToPadding(.05, vector.start.y)};
+
+          let end = {
+            'x': accWidth * letterWidth + letterVectors[letter].width * letterWidth * scaleToPadding(.05, vector.end.x),
+            'y': letterHeight * scaleToPadding(.05, vector.end.y)};
+
+          context.moveTo(start.x + centerShift.x, start.y + centerShift.y);
+          context.lineTo(end.x + centerShift.x, end.y + centerShift.y);
+
+          // Calculate a path distance.
+          let dist = Math.sqrt(Math.pow(end.y - start.y, 2) + Math.pow(end.x - start.x, 2));
+          let ballCount = dist / ballRate;
+
+          // Move balls by interpolating.
+          for (let k = 0; k < ballCount; k++) {
+            let left = start.x + (end.x - start.x) * k / ballCount;
+            let top = start.y + (end.y - start.y) * k / ballCount;
+
+            left += Math.random() * wiggle - wiggle / 2;
+            top += Math.random() * wiggle - wiggle / 2;
+
+            balls[ballIndex].css({"left": left + centerShift.x, "top": top + centerShift.y});
+            ballIndex++;
+          }
+        } else if (vector.type == 'arc') {
+          let center = {
+            'x': accWidth * letterWidth + letterVectors[letter].width * letterWidth * scaleToPadding(.05, vector.x),
+            'y': letterHeight * scaleToPadding(.05, vector.y)
+          };
+          let radius = letterVectors[letter].width * letterWidth * vector.r - 2.5 / letterVectors[letter].width;
+          context.arc(center.x, center.y, radius, Math.PI, 0 , false);
+
+          // Ugh, assume semicircle I guess. Sorry other people, im lazy.
+          let arcLength = 3 * radius;
+          let ballCount = arcLength / ballRate;
+
+          // Move balls by interpolating.
+          for (let k = 0; k < ballCount; k++) {
+            let angle = Math.PI * k / ballCount;
+            let top = center.y - Math.sin(angle) * radius;
+            let left = center.x - Math.cos(angle) * radius;
+            balls[ballIndex].css({"left": left + centerShift.x, "top": top + centerShift.y});
+            ballIndex++;
+          }
+
+        }
+        context.stroke();
+      }
+      accWidth += letterVectors[letter].width;
+    }
+
+    // hide the rest
+    for (let i = ballIndex; i < balls.length; i++) {
+      balls[i].css({"opacity": 0});
+    }
+  };
+
+  function scaleToPadding(padding, value) {
+    let range = 1 - padding * 2;
+    value *= range;
+    return value + padding;
+  }
+
+</script>
+
+<style>
+  #test-vectors {
+    display: none;
+    position: absolute;
+  }
+  #container {
+    position: relative;
+  }
+  #balls {
+    position: absolute;
+    width: 2000px;
+    height: 200px;
+  }
+  .ball {
+    border-radius: 5px;
+    background-color: rgba(200, 100, 0, .5);
+    width: 5px;
+    height: 5px;
+    transition: top 4s, left 4s;
+    transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.5);
+    /*transition-timing-function: cubic-bezier(0.310, 0.440, 0.445, 1.650);;*/
+
+    backface-visibility: hidden;
+    position: absolute;
+  }
+
+  @keyframes jump {
+    0% {top: 0;animation-timing-function: ease-in;}
+    50% {top: 140px;height: 140px;animation-timing-function: ease-out;}
+    55% {top: 160px; height: 120px;border-radius: 70px / 60px;animation-timing-function: ease-in;}
+    65% {top: 120px; height: 140px;border-radius: 70px;animation-timing-function: ease-out;}
+    95% {top: 0;animation-timing-function: ease-in;}
+    100% {top: 0;animation-timing-function: ease-in;}
+  }
+</style>
+
+<div id="container">
+  <canvas id="test-vectors" width="4000" height="400" style="width: 2000px; height: 200px;"></canvas>
+  <div id="balls"></div>
+</div>
