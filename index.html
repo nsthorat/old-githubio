@@ -4,7 +4,7 @@
   // Mapping of letters to their array of vectors.
   // Each value is an array of line segments defined by a [x1, y2, x2, y2] tuple.
   // 0, 0 is top-left, 1, 1 is bottom right
-  let letterVectors = {
+  var letterVectors = {
     "N": {
       width: .8,
       vectors: [
@@ -41,45 +41,45 @@
     }
   };
 
-  let word = "Nikhil";
+  var word = "Nikhil";
 
   // Count total vectors, assume same length.
-  let totalLength = 0;
-  let totalWidth = 0;
-  for (let j = 0; j < word.length; j++) {
+  var totalLength = 0;
+  var totalWidth = 0;
+  for (var j = 0; j < word.length; j++) {
     totalLength += letterVectors[word[j]].vectors.length
     totalWidth += letterVectors[word[j]].width;
   }
 
   // Constants.
-  let usableWidth = Math.min(window.innerWidth, 800);
-  let usableHeight = Math.min(window.innerHeight, 600);
-  let centerShift = {'x': window.innerWidth / 2 - usableWidth / 2, 'y': window.innerHeight / 2 - usableHeight / 2};
+  var usableWidth = Math.min(window.innerWidth, 800);
+  var usableHeight = Math.min(window.innerHeight, 600);
+  var centerShift = {'x': window.innerWidth / 2 - usableWidth / 2, 'y': window.innerHeight / 2 - usableHeight / 2};
 
   //
-  let ballCount = 2000;
-  let ballSize = 5;
-  let ballCountPerPath = ballCount / totalLength;
+  var ballCount = 2000;
+  var ballSize = 5;
+  var ballCountPerPath = ballCount / totalLength;
   // How often to put balls
-  let ballRate = 4;
-  let wiggle = 0;
+  var ballRate = 4;
+  var wiggle = 0;
 
   // How width values scale for letters.
-  let letterWidth = usableWidth / totalWidth;
-  let letterHeight = letterWidth;
+  var letterWidth = usableWidth / totalWidth;
+  var letterHeight = letterWidth;
 
-  let canvasWidth = 2000;
-  let canvasHeight = 200;
+  var canvasWidth = 2000;
+  var canvasHeight = 200;
 
   // Globals.
-  let balls = [];
+  var balls = [];
 
   $(document).ready(function () {
     // Size balls.
     $("#balls").width(window.innerWidth).height(window.innerHeight);
     // Create the balls in their initial position
-    for (let i = 0; i < ballCount; i++) {
-      let ball = $("<div class='ball'></div>");
+    for (var i = 0; i < ballCount; i++) {
+      var ball = $("<div class='ball'></div>");
       $("#balls").append(ball);
 
       // Make this better
@@ -94,26 +94,26 @@
   });
 
   function paint() {
-    let canvas = $("#test-vectors");
-    let context = canvas[0].getContext("2d");
+    var canvas = $("#test-vectors");
+    var context = canvas[0].getContext("2d");
 
     var accWidth = 0;
     var ballIndex = 0;
-    for (let i = 0; i < word.length; i++) {
-      let letter = word[i];
-      let vectors = letterVectors[letter].vectors;
+    for (var i = 0; i < word.length; i++) {
+      var letter = word[i];
+      var vectors = letterVectors[letter].vectors;
 
-      for (let j = 0; j < vectors.length; j++) {
-        let vector = vectors[j];
+      for (var j = 0; j < vectors.length; j++) {
+        var vector = vectors[j];
 
         context.lineWidth = "6";
         context.beginPath();
         if (vector.type == 'line') {
-          let start = {
+          var start = {
             'x' : accWidth * letterWidth + letterVectors[letter].width * letterWidth * scaleToPadding(.05, vector.start.x),
             'y': letterHeight * scaleToPadding(.05, vector.start.y)};
 
-          let end = {
+          var end = {
             'x': accWidth * letterWidth + letterVectors[letter].width * letterWidth * scaleToPadding(.05, vector.end.x),
             'y': letterHeight * scaleToPadding(.05, vector.end.y)};
 
@@ -121,13 +121,13 @@
           context.lineTo(end.x + centerShift.x, end.y + centerShift.y);
 
           // Calculate a path distance.
-          let dist = Math.sqrt(Math.pow(end.y - start.y, 2) + Math.pow(end.x - start.x, 2));
-          let ballCount = dist / ballRate;
+          var dist = Math.sqrt(Math.pow(end.y - start.y, 2) + Math.pow(end.x - start.x, 2));
+          var ballCount = dist / ballRate;
 
           // Move balls by interpolating.
-          for (let k = 0; k < ballCount; k++) {
-            let left = start.x + (end.x - start.x) * k / ballCount;
-            let top = start.y + (end.y - start.y) * k / ballCount;
+          for (var k = 0; k < ballCount; k++) {
+            var left = start.x + (end.x - start.x) * k / ballCount;
+            var top = start.y + (end.y - start.y) * k / ballCount;
 
             left += Math.random() * wiggle - wiggle / 2;
             top += Math.random() * wiggle - wiggle / 2;
@@ -136,22 +136,22 @@
             ballIndex++;
           }
         } else if (vector.type == 'arc') {
-          let center = {
+          var center = {
             'x': accWidth * letterWidth + letterVectors[letter].width * letterWidth * scaleToPadding(.05, vector.x),
             'y': letterHeight * scaleToPadding(.05, vector.y)
           };
-          let radius = letterVectors[letter].width * letterWidth * vector.r - 2.5 / letterVectors[letter].width;
+          var radius = letterVectors[letter].width * letterWidth * vector.r - 2.5 / letterVectors[letter].width;
           context.arc(center.x, center.y, radius, Math.PI, 0 , false);
 
           // Ugh, assume semicircle I guess. Sorry other people, im lazy.
-          let arcLength = 3 * radius;
-          let ballCount = arcLength / ballRate;
+          var arcLength = 3 * radius;
+          var ballCount = arcLength / ballRate;
 
           // Move balls by interpolating.
-          for (let k = 0; k < ballCount; k++) {
-            let angle = Math.PI * k / ballCount;
-            let top = center.y - Math.sin(angle) * radius;
-            let left = center.x - Math.cos(angle) * radius;
+          for (var k = 0; k < ballCount; k++) {
+            var angle = Math.PI * k / ballCount;
+            var top = center.y - Math.sin(angle) * radius;
+            var left = center.x - Math.cos(angle) * radius;
             balls[ballIndex].css({"left": left + centerShift.x, "top": top + centerShift.y});
             ballIndex++;
           }
@@ -163,13 +163,13 @@
     }
 
     // hide the rest
-    for (let i = ballIndex; i < balls.length; i++) {
+    for (var i = ballIndex; i < balls.length; i++) {
       balls[i].css({"opacity": 0});
     }
   };
 
   function scaleToPadding(padding, value) {
-    let range = 1 - padding * 2;
+    var range = 1 - padding * 2;
     value *= range;
     return value + padding;
   }
