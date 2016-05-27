@@ -72,7 +72,8 @@
   var canvasHeight = 200;
 
   // Globals.
-  var balls = [];
+  var balls = [];  // All of the ball elements themselves.
+  var ballStates = [];  // Computed positions and element pointers.
 
   $(document).ready(function () {
     // Size balls.
@@ -82,7 +83,7 @@
       var ball = $("<div class='ball'></div>");
       $("#balls").append(ball);
 
-      // Make this better
+      // Starting positions.
       ball.css({
         "top": window.innerHeight - Math.random() * 20,
         "left": Math.random() * window.innerWidth
@@ -90,13 +91,12 @@
       balls.push(ball);
     }
 
-    setTimeout(paint, 2000);
+    // Give the main thread a break.
+    setTimeout(setStates, 0);
   });
 
-  function paint() {
-    var canvas = $("#test-vectors");
-    var context = canvas[0].getContext("2d");
-
+  function setStates() {
+    // Set all the final positions for the balls.
     var accWidth = 0;
     var ballIndex = 0;
     for (var i = 0; i < word.length; i++) {
@@ -106,19 +106,14 @@
       for (var j = 0; j < vectors.length; j++) {
         var vector = vectors[j];
 
-        context.lineWidth = "6";
-        context.beginPath();
         if (vector.type == 'line') {
           var start = {
-            'x' : accWidth * letterWidth + letterVectors[letter].width * letterWidth * scaleToPadding(.05, vector.start.x),
-            'y': letterHeight * scaleToPadding(.05, vector.start.y)};
+            x : accWidth * letterWidth + letterVectors[letter].width * letterWidth * scaleToPadding(.05, vector.start.x),
+            y: letterHeight * scaleToPadding(.05, vector.start.y)};
 
           var end = {
-            'x': accWidth * letterWidth + letterVectors[letter].width * letterWidth * scaleToPadding(.05, vector.end.x),
-            'y': letterHeight * scaleToPadding(.05, vector.end.y)};
-
-          context.moveTo(start.x + centerShift.x, start.y + centerShift.y);
-          context.lineTo(end.x + centerShift.x, end.y + centerShift.y);
+            x: accWidth * letterWidth + letterVectors[letter].width * letterWidth * scaleToPadding(.05, vector.end.x),
+            y: letterHeight * scaleToPadding(.05, vector.end.y)};
 
           // Calculate a path distance.
           var dist = Math.sqrt(Math.pow(end.y - start.y, 2) + Math.pow(end.x - start.x, 2));
@@ -132,16 +127,23 @@
             left += Math.random() * wiggle - wiggle / 2;
             top += Math.random() * wiggle - wiggle / 2;
 
-            balls[ballIndex].css({"left": left + centerShift.x, "top": top + centerShift.y});
+            let ballState = {
+              'x': left + centerShift.x,
+              'y': top + centerShift.y,
+              'elem': balls[ballIndex],
+              inWord: false
+            };
+            ballStates.push(ballState);
+
+            //balls[ballIndex].css({"left": left + centerShift.x, "top": top + centerShift.y});
             ballIndex++;
           }
         } else if (vector.type == 'arc') {
           var center = {
-            'x': accWidth * letterWidth + letterVectors[letter].width * letterWidth * scaleToPadding(.05, vector.x),
-            'y': letterHeight * scaleToPadding(.05, vector.y)
+            x: accWidth * letterWidth + letterVectors[letter].width * letterWidth * scaleToPadding(.05, vector.x),
+            y: letterHeight * scaleToPadding(.05, vector.y)
           };
           var radius = letterVectors[letter].width * letterWidth * vector.r - 2.5 / letterVectors[letter].width;
-          context.arc(center.x, center.y, radius, Math.PI, 0 , false);
 
           // Ugh, assume semicircle I guess. Sorry other people, im lazy.
           var arcLength = 3 * radius;
@@ -152,21 +154,51 @@
             var angle = Math.PI * k / ballCount;
             var top = center.y - Math.sin(angle) * radius;
             var left = center.x - Math.cos(angle) * radius;
-            balls[ballIndex].css({"left": left + centerShift.x, "top": top + centerShift.y});
+
+            let ballState = {
+              'x': left + centerShift.x,
+              'y': top + centerShift.y,
+              'elem': balls[ballIndex],
+              inWord: false
+            };
+            ballStates.push(ballState);
+
+            //balls[ballIndex].css({"left": left + centerShift.x, "top": top + centerShift.y});
             ballIndex++;
           }
 
         }
-        context.stroke();
       }
       accWidth += letterVectors[letter].width;
     }
 
-    // hide the rest
+    // Hide the rest.
     for (var i = ballIndex; i < balls.length; i++) {
       balls[i].css({"opacity": 0});
     }
-  };
+
+    setTimeout(animateAllToWord, 3000);
+  }
+
+  var batchCount = 5;
+  function animateAllToWord() {
+    var count = 0;
+    for (var i = 0; i < ballStates.length; i++) {
+      var ballState = ballStates[i];
+
+      if (!ballState.inWord) {
+        ballState.elem.css({"left": ballState.x, "top": ballState.y});
+        ballState.inWord = true;
+        count++;
+      }
+
+      if (count == batchCount) {
+        setTimeout(animateAllToWord, 0);
+        return;
+      }
+    }
+    return;
+  }
 
   function scaleToPadding(padding, value) {
     var range = 1 - padding * 2;
@@ -213,6 +245,5 @@
 </style>
 
 <div id="container">
-  <canvas id="test-vectors" width="4000" height="400" style="width: 2000px; height: 200px;"></canvas>
   <div id="balls"></div>
 </div>
