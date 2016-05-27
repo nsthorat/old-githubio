@@ -220,7 +220,7 @@
   function tapScreen(event) {
     var clickx = event.pageX;
     var clicky = event.pageY;
-    
+
     // Figure out which letter we're in.
     var accWidth = 0;
     for (var i = 0; i < word.length; i++) {
@@ -277,6 +277,7 @@
     position: absolute;
     width: 2000px;
     height: 200px;
+    tap-highlight-color: rgba(0,0,0,0);
   }
   .ball {
     border-radius: 5px;
