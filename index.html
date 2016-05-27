@@ -99,6 +99,8 @@
     setTimeout(setStates, 0);
 
     $("#balls").click(tapScreen);
+    window.ondevicemotion = shake;
+
   });
 
   function setStates() {
@@ -192,6 +194,8 @@
     }
 
     setTimeout(animateAllToWord, 3000);
+
+
   }
 
   var batchCount = 5;
@@ -217,6 +221,10 @@
     return;
   }
 
+  function shake() {
+    animateAllToWord();
+  }
+
   function tapScreen(event) {
     var clickx = event.pageX;
     var clicky = event.pageY;
@@ -229,7 +237,6 @@
 
       if (clickx > centerShift.x + accWidth * letterWidth &&
           clickx < centerShift.x + accWidth * letterWidth + letterVectors[letter].width * letterWidth) {
-        //window.console.log(i);
         dropLetter(i);
         return;
       }
@@ -253,6 +260,7 @@
 
       ballState.y += yshift;
       ballState.x += xshift;
+      ballState.inWord = false;
       ballState.elem.css({"top": ballState.y, "left": ballState.x});
     }
   }
