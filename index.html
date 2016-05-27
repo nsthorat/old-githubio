@@ -85,8 +85,11 @@
 
       // Starting positions.
       ball.css({
-        "top": window.innerHeight - Math.random() * 20,
-        "left": Math.random() * window.innerWidth
+       // "top": window.innerHeight - Math.random() * 20,
+        //"left": Math.random() * window.innerWidth,
+        "top": Math.random() * window.innerHeight,
+        "left": Math.random() * window.innerWidth,
+        "visibility": "hidden"
       });
       balls.push(ball);
     }
@@ -187,7 +190,7 @@
       var ballState = ballStates[i];
 
       if (!ballState.inWord) {
-        ballState.elem.css({"left": ballState.x, "top": ballState.y});
+        ballState.elem.css({"left": ballState.x, "top": ballState.y, "visibility": ""});
         ballState.inWord = true;
         count++;
       }
