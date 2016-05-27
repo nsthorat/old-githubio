@@ -127,7 +127,7 @@
             left += Math.random() * wiggle - wiggle / 2;
             top += Math.random() * wiggle - wiggle / 2;
 
-            let ballState = {
+            var ballState = {
               'x': left + centerShift.x,
               'y': top + centerShift.y,
               'elem': balls[ballIndex],
@@ -155,7 +155,7 @@
             var top = center.y - Math.sin(angle) * radius;
             var left = center.x - Math.cos(angle) * radius;
 
-            let ballState = {
+            var ballState = {
               'x': left + centerShift.x,
               'y': top + centerShift.y,
               'elem': balls[ballIndex],
