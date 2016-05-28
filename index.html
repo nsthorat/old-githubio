@@ -296,7 +296,7 @@
   function removeExplodingClasses() {
     for (var i = 0; i < ballStates.length; i++) {
       var ballState = ballStates[i];
-      //ballState.elem.removeClass("exploding");
+      ballState.elem.removeClass("exploding");
     }
   }
 
@@ -338,7 +338,8 @@
     background-color: rgba(200, 100, 0, .5);
     width: 5px;
     height: 5px;
-    transition: all 2s cubic-bezier(0.175, 0.885, 0.32, 1.2);/* update animation time constant */
+    transition: all 2s cubic-bezier(0.175, 0.885, 0.32, 1.2);
+    /* update animation time constant */
     /*transition-timing-function: cubic-bezier(0.310, 0.440, 0.445, 1.650);;*/
 
     backface-visibility: hidden;
@@ -346,9 +347,13 @@
   }
 
   .exploding {
-    opacity: 0;
-    transition: opacity 600ms cubic-bezier(0.19, 1, 0.22, 1), top 600ms cubic-bezier(0.19, 1, 0.22, 1),
+    transition: opacity 600ms cubic-bezier(0.19, 1, 0.22, 1) 600ms, top 600ms cubic-bezier(0.19, 1, 0.22, 1),
         left 600ms cubic-bezier(0.19, 1, 0.22, 1) !important; /* update animation time constant */
+  }
+
+  .hidden {
+    opacity: 0;
+    transition: opacity 600ms cubic-bezier(0.19, 1, 0.22, 1);
   }
 
   @keyframes jump {
