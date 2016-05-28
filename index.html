@@ -239,7 +239,7 @@
       }
 
       if (count == batchCount) {
-        setTimeout(animateAllToWord, 0);
+        requestAnimationFrame(animateAllToWord);
         return;
       }
     }
@@ -271,7 +271,6 @@
     }
   }
 
-
   var radius = 300;
   function dropLetter(letterIndex) {
     var ballStates = letterToBallStates[letterIndex];
@@ -297,7 +296,7 @@
   function removeExplodingClasses() {
     for (var i = 0; i < ballStates.length; i++) {
       var ballState = ballStates[i];
-      //ballState.elem.removeClass("ball-exploding");
+      ballState.elem.removeClass("exploding");
     }
   }
 
