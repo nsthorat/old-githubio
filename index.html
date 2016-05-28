@@ -225,7 +225,7 @@
     setTimeout(animateAllToWord, 1000);
   }
 
-  var batchCount = 5;
+  var batchCount = 8;
   function animateAllToWord() {
     var count = 0;
     for (var i = 0; i < ballStates.length; i++) {
@@ -347,8 +347,7 @@
   }
 
   .exploding {
-    opacity: .01;
-    transition: opacity 600ms cubic-bezier(0.19, 1, 0.22, 1) 600ms, top 600ms cubic-bezier(0.19, 1, 0.22, 1),
+    transition: top 600ms cubic-bezier(0.19, 1, 0.22, 1),
         left 600ms cubic-bezier(0.19, 1, 0.22, 1) !important; /* update animation time constant */
   }
 
