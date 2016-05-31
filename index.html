@@ -219,7 +219,7 @@
 
     // Hide the rest.
     for (var i = ballIndex; i < balls.length; i++) {
-      balls[i].css({"opacity": 0});
+      //balls[i].css({"opacity": 0.001});
     }
 
     setTimeout(animateAllToWord, 1000);
@@ -286,8 +286,8 @@
       ballState.y += yshift;
       ballState.x += xshift;
       ballState.inWord = false;
+      ballState.elem.css({"top": ballState.y, "left": ballState.x, "opacity": 0.001});
       ballState.elem.addClass("exploding");
-      ballState.elem.css({"top": ballState.y, "left": ballState.x});
 
       setTimeout(removeExplodingClasses, 600);
     }
@@ -296,7 +296,7 @@
   function removeExplodingClasses() {
     for (var i = 0; i < ballStates.length; i++) {
       var ballState = ballStates[i];
-      ballState.elem.removeClass("exploding");
+      //ballState.elem.removeClass("exploding");
     }
   }
 
@@ -344,15 +344,15 @@
 
     backface-visibility: hidden;
     position: absolute;
+    opacity: 1;
   }
 
   .exploding {
-    transition: top 600ms cubic-bezier(0.19, 1, 0.22, 1),
-        left 600ms cubic-bezier(0.19, 1, 0.22, 1) !important; /* update animation time constant */
+    transition: all 600ms cubic-bezier(0.19, 1, 0.22, 1),
+        left 600ms cubic-bezier(0.19, 1, 0.22, 1), opacity 600ms linear !important, ; /* update animation time constant */
   }
 
   .hidden {
-    opacity: 0;
     transition: opacity 600ms cubic-bezier(0.19, 1, 0.22, 1);
   }
 
