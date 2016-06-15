@@ -1,0 +1,145 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script type="text/javascript">
+  if (navigator.requestMIDIAccess) {
+    navigator.requestMIDIAccess({
+      sysex: false // this defaults to 'false' and we won't be covering sysex in this article.
+    }).then(onMIDISuccess, onMIDIFailure);
+  } else {
+    alert("No MIDI support in your browser.");
+  }
+
+  function onMIDISuccess(midiAccess) {
+    let midi = midiAccess;
+    var inputs = midi.inputs.values();
+    for (let input = inputs.next(); input && !input.done; input = inputs.next()) {
+      input.value.onmidimessage = onMIDIMessage;
+    }
+  }
+
+  function onMIDIMessage(event) {
+    data = event.data,
+        cmd = data[0] >> 4,
+        channel = data[0] & 0xf,
+        type = data[0] & 0xf0, // channel agnostic message type. Thanks, Phil Burk.
+        note = data[1],
+        velocity = data[2];
+    // with pressure and tilt off
+    // note off: 128, cmd: 8
+    // note on: 144, cmd: 9
+    // pressure / tilt on
+    // pressure: 176, cmd 11:
+    // bend: 224, cmd: 14
+
+    switch (type) {
+      case 144:
+        noteOn(note, velocity);
+        break;
+      case 128:
+        noteOff(note, velocity);
+        break;
+    }
+  }
+
+  let notes = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
+  let notesOn = {};
+  let keysOn = {};
+  let lastVelocity = {};
+
+  function noteOn(midiNote, velocity) {
+    notesOn[notes[midiNote % 12]] = true;
+    keysOn[midiNote] = true;
+    lastVelocity[midiNote] = velocity;
+  }
+
+  function noteOff(midiNote, velocity) {
+    notesOn[notes[midiNote % 12]] = false;
+    keysOn[midiNote] = false;
+  }
+
+  function onMIDIFailure(e) {
+    console.log("rekd");
+  }
+
+  let minRange = 21;
+  let maxRange = 108;
+  let middleC = 60;
+
+  let circleElements = [];
+  $(document).ready(function() {
+    let circleSpace = window.innerWidth / (maxRange - minRange);
+
+    // Create a circle for each note.
+    for (let i = 0; i < maxRange - minRange; i++) {
+      let circle = $("<div class='circle'></div>");
+
+      let x_center = circleSpace * i + circleSpace / 2;
+      let y_center = window.innerHeight / 2 - circleSpace / 2;
+
+      circle.css({"background-color": "hsl(" + (360 / 12) * (i % 12) + ", 100%, 50%)"})
+      $("#container").append(circle);
+      circleElements.push({
+        'elem': circle, 's': 0,
+        'x_center': x_center, 'y_center': y_center,
+        'x': x_center, 'y': y_center});
+    }
+
+    grow();
+  });
+
+  let growRate = 100;
+  let lastNow = performance.now();
+  function grow() {
+    let rightNow = performance.now();
+    let ellapsedTime = rightNow - lastNow;
+    let pixelExpand = growRate / ellapsedTime;
+
+    for (note in keysOn) {
+      let vel = lastVelocity[note];
+      window.console.log(vel / 128);
+      let noteIndex = note - minRange;
+      let circle = circleElements[noteIndex];
+
+      if (keysOn[note]) {
+        circle['s'] += pixelExpand;
+
+        circle['elem'].width(Math.floor(circle['s'])).height(Math.floor(circle['s']));
+        circle['elem'].css({
+          "left": Math.floor(circle['x'] - circle['s'] / 2),
+          "top": Math.floor(circle['y'] - circle['s'] / 2),
+          "opacity": vel / 128});
+        circle['elem'].addClass('circle-noanimate');
+      } else {
+        circle['s'] = 0;
+        circle['x'] = circle['x_center'];
+        circle['y'] = circle['y_center'];
+
+        circle['elem'].removeClass('circle-noanimate');
+
+        circle['elem'].width(0).height(0);
+        circle['elem'].css({
+          "left": circle['x'],
+          "top": circle['y']});
+      }
+    }
+
+    lastNow = rightNow;
+    requestAnimationFrame(grow);
+  }
+
+</script>
+
+<style>
+  .circle {
+    background-color: green;
+    border-radius: 50%;
+    opacity: .5;
+    position: absolute;
+    transition: all .5s ease-in-out;
+  }
+
+  .circle-noanimate {
+    transition: none !important;
+  }
+</style>
+
+<div id="container"></div>
