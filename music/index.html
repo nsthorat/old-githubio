@@ -1,5 +1,12 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
 <script type="text/javascript">
+  window.audioContext = new (window.AudioContext || window.webkitAudioContext)();
+
+  // Create global volume control.
+  var totalGain = window.audioContext.createGain();
+  totalGain.gain.value = 1;
+  totalGain.connect(window.audioContext.destination);
+
   if (navigator.requestMIDIAccess) {
     navigator.requestMIDIAccess({
       sysex: false // this defaults to 'false' and we won't be covering sysex in this article.
@@ -40,20 +47,114 @@
     }
   }
 
+  let keyNoteMap = {
+    // Eb is 'q'
+    81: 51,
+    // E is 'a'
+    65: 52,
+    // F is 's'
+    83: 53,
+    // Gb is 'e'
+    69: 54,
+    // G is 'd'
+    68: 55,
+    // Ab is 'r'
+    82: 56,
+    // A is 'f'
+    70: 57,
+    // Bb is 't',
+    84: 58,
+    // B is 'g'
+    71: 59,
+    // Middle C is 'h'
+    72: 60,
+    // C# is 'u'
+    85: 61,
+    // D is 'j'
+    74: 62,
+    // D# is 'i'
+    73: 63,
+    // E is 'k'
+    75: 64,
+    // F is 'l'
+    76: 65,
+    // F# is 'p'
+    80: 66,
+    // G is ';'
+    186: 67,
+    // G# is '['
+    219: 68,
+    // A is '''
+    222: 69,
+    // A# is ']'
+    221: 70
+  };
+
+  let octave = 0;
+  function keyup(event) {
+    if (event.which in keyNoteMap) {
+      noteOff(keyNoteMap[event.which] + octave * 12, 128);
+    }
+  }
+
+  function keydown(event) {
+    if (event.which in keyNoteMap) {
+      if (keysOn[keyNoteMap[event.which] + octave * 12]) {
+        return;
+      }
+      noteOn(keyNoteMap[event.which] + octave * 12, 128);
+    }
+  }
+
+  function keypress(event) {
+    if (event.which == 122) { // z
+      // Octave down.
+      octave--;
+    } else if (event.which == 120) { // x
+      // Octave up
+      octave++;
+    }
+  }
+
   let notes = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
   let notesOn = {};
   let keysOn = {};
   let lastVelocity = {};
 
+  let midiNoteOscGainMap = {};
+
   function noteOn(midiNote, velocity) {
     notesOn[notes[midiNote % 12]] = true;
     keysOn[midiNote] = true;
     lastVelocity[midiNote] = velocity;
+
+    let gainNode = window.audioContext.createGain();
+    gainNode.gain.value = velocity / 128;
+    gainNode.connect(totalGain);
+
+    let oscillator = audioContext.createOscillator();
+    oscillator.connect(gainNode);
+    oscillator.start(0);
+    oscillator.frequency.value = getFrequency(midiNote);
+    oscillator.type = 'triangle';
+
+    midiNoteOscGainMap[midiNote] = {};
+    midiNoteOscGainMap[midiNote]['gain'] = gainNode;
+    midiNoteOscGainMap[midiNote]['osc'] = oscillator;
   }
 
   function noteOff(midiNote, velocity) {
     notesOn[notes[midiNote % 12]] = false;
     keysOn[midiNote] = false;
+
+    let gainNode = midiNoteOscGainMap[midiNote]['gain'];
+    gainNode.gain.setValueAtTime(gainNode.gain.value, window.audioContext.currentTime);
+    gainNode.gain.exponentialRampToValueAtTime(0.0001, window.audioContext.currentTime + 0.03);
+  }
+
+  // Gets frequency from midi note.
+  function getFrequency(midiNote) {
+    return 440 * Math.pow(Math.pow(2, 1/12), midiNote - 69);
   }
 
   function onMIDIFailure(e) {
@@ -62,10 +163,13 @@
 
   let minRange = 21;
   let maxRange = 108;
-  let middleC = 60;
-
   let circleElements = [];
   $(document).ready(function() {
+    $(document).keyup(keyup);
+    $(document).keydown(keydown);
+    // For octave toggling, modes, etc
+    $(document).keypress(keypress);
+
     let circleSpace = window.innerWidth / (maxRange - minRange);
 
     // Create a circle for each note.
@@ -80,7 +184,8 @@
       circleElements.push({
         'elem': circle, 's': 0,
         'x_center': x_center, 'y_center': y_center,
-        'x': x_center, 'y': y_center});
+        'x': x_center, 'y': y_center
+      });
     }
 
     grow();
@@ -95,7 +200,6 @@
 
     for (note in keysOn) {
       let vel = lastVelocity[note];
-      window.console.log(vel / 128);
       let noteIndex = note - minRange;
       let circle = circleElements[noteIndex];
 
