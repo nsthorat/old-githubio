@@ -48,6 +48,7 @@
     }
 
     var time = document.getElementById('time');
+    var timeSlots = document.getElementById('time-slots');
     var numSlots = (maxTime - minTime) / 1000 / 60 / 30;
     for (var i = 0; i < numSlots; i++) {
       var slot = document.createElement('div');
@@ -68,9 +69,9 @@
       slot.style.top = i * timeSlotHeight + "px";
       slot.style.height = timeSlotHeight;
       slot.style.width = windowWidth;
-      time.appendChild(slot);
+      timeSlots.appendChild(slot);
     }
-    time.style.height = window.innerHeight;
+    timeSlots.style.height = window.innerHeight;
 
     // NOW!
     // Set scroll position
@@ -87,6 +88,14 @@
     onScroll();
     time.addEventListener('scroll', onScroll);
 
+    var eventsOuter = document.getElementById('events');
+    eventsOuter.style.width = screen.availWidth + 'px';
+
+    var eventsContainer = document.getElementById('events-scroll');
+    eventsContainer.style.left = leftOffset + 'px';
+    eventsContainer.style.width = windowWidth;
+
+    var stagesElem = document.getElementById('stages');
     // Make the stage headers.
     for (var i = 0; i < stages.length; i++) {
       var stageHeader = document.createElement('div');
@@ -95,11 +104,10 @@
       stageHeader.style.left = leftOffset + (eventPadding + eventWidth) * i;
       stageHeader.style.width = eventWidth + eventPadding + 'px';
 
-      time.appendChild(stageHeader);
+      stagesElem.appendChild(stageHeader);
     }
 
     // Make the events.
-    var eventsContainer = document.getElementById('events');
     for (var i = 0; i < events.length; i++) {
       var eventElement = document.createElement('div');
       eventElement.className = 'event';
@@ -113,7 +121,7 @@
 
       var stage = stages.indexOf(events[i]['stage']);
 
-      var left = leftOffset + (eventWidth + eventPadding) * stage;
+      var left = (eventWidth + eventPadding) * stage;
       eventElement.style.left = left + 'px';
 
       eventElement.innerText = events[i]['artist'];
@@ -169,6 +177,7 @@
     top: 0;
   }
   #time {
+    padding-left: 5px;
     overflow-y: auto;
     position: relative;
     max-height: 100vh;
@@ -195,6 +204,10 @@
     position: relative;
     top: 0;
     left: 0;
+    z-index: 100;
+  }
+  #events-scroll {
+    position: relative;
   }
 </style>
 
@@ -202,6 +215,14 @@
   <div id="time">
     <div id="day"></div>
     <div id="now"></div>
-    <div id="events"></div>
+    <div id="events">
+      <div id="events-scroll">
+        <div id="stages">
+        </div>
+      </div>
+    </div>
+    <div id="time-slots">
+
+    </div>
   </div>
 </div>
