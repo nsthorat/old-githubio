@@ -149,6 +149,7 @@
     console.log(e);
     startSwipe = e.changedTouches[0];
     startOffset = eventsElement.offsetLeft;
+ ]
   }
   function handleEnd(e) {
     var eventsElement = document.getElementById('events');
@@ -161,6 +162,7 @@
     console.log(e);
     console.log("startOffset : " + startOffset + ", event: " + e.changedTouches[0].pageX + ", " + startSwipe.pageX);
     eventsOffset = startOffset + (e.changedTouches[0].pageX - startSwipe.pageX);
+    console.log("total offset: " + eventsOffset);
   }
 
   var daysofweek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -181,9 +183,9 @@
   function animate() {
     var eventsElement = document.getElementById('events-scroll');
     eventsElement.style.left = eventsOffset + 'px';
-    console.log("eventsOffset: " + eventsOffset);
+    //console.log("eventsOffset: " + eventsOffset);
 
-    console.log("animating...");
+    //console.log("animating...");
     requestAnimationFrame(animate);
   }
 </script>
