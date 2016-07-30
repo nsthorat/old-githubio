@@ -159,8 +159,7 @@
   }
   function handleMove(e) {
     console.log(e);
-    console.log("start:");
-    console.log(startSwipe);
+    console.log("startOffset : " + startOffset + ", event: " + e.changedTouches[0].pageX + ", " + startSwipe.pageX);
     eventsOffset = startOffset + (e.changedTouches[0].pageX - startSwipe.pageX);
   }
 
