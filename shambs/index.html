@@ -1,0 +1,81 @@
+<script type="text/javascript">
+  // Constants
+  var pixelsPerHalfHour = 100;
+
+  var events = [];
+  function load(csv_data) {
+    setTimeout(function() {
+      var events_raw = csv_data.split("|");
+      for (var i = 0; i < events_raw.length; i++) {
+        let values = events_raw[i].split(",");
+        var start = new Date(values[0].replace(" ", "T"));
+        start.setTime(start.getTime() + 4 * 60 * 60 * 1000);
+        var end = new Date(values[1].replace(" ", "T"));
+        end.setTime(end.getTime() + 4 * 60 * 60 * 1000);
+        events.push({
+          'raw': values,
+          'start': start,
+          'end': end,
+          'artist': values[2],
+          'stage': values[3]
+        })
+      }
+      console.log(events);
+
+      initTime();
+    }, 0);
+  }
+
+  function initTime() {
+    var minTime, maxTime;
+    for (var i = 0; i < events.length; i++) {
+      if (!minTime || events[i]['start'] < minTime) {
+        minTime = events[i]['start'];
+        console.log("MIN: ");
+        console.log(events[i]['raw']);
+        console.log(minTime);
+      }
+      if (!maxTime || events[i]['end'] > maxTime) {
+        maxTime = events[i]['end'];
+      }
+    }
+
+    console.log(minTime);
+    var time = document.getElementById('time');
+    var numSlots = (maxTime - minTime) / 1000 / 60 / 30;
+    for (let i = 0; i < numSlots; i++) {
+      var slot = document.createElement('div');
+      slot.className = "time-slot";
+      var date = new Date(minTime.getMilliseconds() + i * 30 * 60 * 1000);
+      var hours = date.getHours();
+      var ampm = "am";
+      if (hours >= 12) {
+        ampm = "pm";
+        hours -= 12;
+      }
+
+      slot.innerText = date.getMonth() + "/" + date.getDay() + " " + hours + ":" + (date.getMinutes() + "0").slice(0, 2) + ampm;
+      time.appendChild(slot);
+    }
+  }
+</script>
+<script src="funkschedule.js"></script>
+<style type="text/css">
+  body {
+    font-family: Open Sans, Helvetica;
+  }
+  .time-slot {
+    height: 100px;
+    border-bottom: 1px solid #ccc;
+    font-size: 40px;
+    margin-bottom: -1px;
+
+  }
+  #time {
+  }
+</style>
+
+<div id="schedule">
+  <div id="time">
+  </div>
+</div>
