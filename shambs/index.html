@@ -7,7 +7,7 @@
     setTimeout(function() {
       var events_raw = csv_data.split("|");
       for (var i = 0; i < events_raw.length; i++) {
-        let values = events_raw[i].split(",");
+        var values = events_raw[i].split(",");
         var start = new Date(values[0].replace(" ", "T"));
         start.setTime(start.getTime() + 4 * 60 * 60 * 1000);
         var end = new Date(values[1].replace(" ", "T"));
@@ -43,7 +43,7 @@
     console.log(minTime);
     var time = document.getElementById('time');
     var numSlots = (maxTime - minTime) / 1000 / 60 / 30;
-    for (let i = 0; i < numSlots; i++) {
+    for (var i = 0; i < numSlots; i++) {
       var slot = document.createElement('div');
       slot.className = "time-slot";
       var date = new Date(minTime.getMilliseconds() + i * 30 * 60 * 1000);
