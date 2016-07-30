@@ -3,9 +3,9 @@
   var pixelsPerHalfHour = 100;
   var timeSlotHeight = 200;
   // Place all the events.
-  var eventWidth = 300;
-  var eventPadding = 10;
   var leftOffset = 200;
+  var eventWidth = window.innerWidth - leftOffset;
+  var eventPadding = 10;
   var stages = ["Amphitheatre", "Fractal Forest", "Village", "Living Room", "Pagoda", "Grove", "Grove - Workshops"];
   var colors = ["rgb(200, 200, 220)", "#9CCC65", "#FFCC80", "#80CBC4", "#EF9A9A", "#FFCC80", "#FFAB91"]
 
@@ -129,6 +129,39 @@
 
       eventsContainer.appendChild(eventElement);
     }
+
+
+    eventsOuter.addEventListener("touchstart", handleStart, false);
+    eventsOuter.addEventListener("touchend", handleEnd, false);
+    //eventsOuter.addEventListener("touchcancel", handleCancel, false);
+    eventsOuter.addEventListener("touchmove", handleMove, false);
+
+    animate();
+  }
+
+  var startSwipe;
+  var startOffset;
+  var eventsOffset;
+  function handleStart(e) {
+    var eventsElement = document.getElementById('events');
+
+    console.log("START:");
+    console.log(e);
+    startSwipe = e.changedTouches[0];
+    startOffset = eventsElement.offsetLeft;
+  }
+  function handleEnd(e) {
+    var eventsElement = document.getElementById('events');
+
+
+    console.log("END:");
+
+  }
+  function handleMove(e) {
+    console.log(e);
+    console.log("start:");
+    console.log(startSwipe);
+    eventsOffset = startOffset + (e.changedTouches[0].pageX - startSwipe.pageX);
   }
 
   var daysofweek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -144,6 +177,13 @@
     var d = new Date("2016-08-06T20:12:00");
     d.setTime(d.getTime() + 4 * 60 * 60 * 1000);
     return d;
+  }
+
+  function animate() {
+    var eventsElement = document.getElementById('events');
+    eventsElement.style.left = eventsOffset;
+
+    requestAnimationFrame(animate);
   }
 </script>
 <script src="funkschedule.js"></script>
@@ -179,6 +219,7 @@
   #time {
     padding-left: 5px;
     overflow-y: auto;
+    overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
     position: relative;
     max-height: 100vh;
