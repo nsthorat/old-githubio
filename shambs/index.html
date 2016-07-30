@@ -181,8 +181,9 @@
 
   function animate() {
     var eventsElement = document.getElementById('events-scroll');
-    eventsElement.style.left = eventsOffset;
+    eventsElement.style.left = eventsOffset + 'px';
 
+    console.log("animating...");
     requestAnimationFrame(animate);
   }
 </script>
