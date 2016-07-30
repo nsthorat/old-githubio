@@ -1,6 +1,16 @@
 <script type="text/javascript">
   // Constants
   var pixelsPerHalfHour = 100;
+  var timeSlotHeight = 200;
+  // Place all the events.
+  var eventWidth = 300;
+  var eventPadding = 10;
+  var leftOffset = 200;
+  var stages = ["Amphitheatre", "Fractal Forest", "Village", "Living Room", "Pagoda", "Grove", "Grove - Workshops"];
+  var colors = ["rgb(200, 200, 220)", "#ccc", "#ccc", "#ccc", "#ccc", "#ccc", "#ccc"]
+
+  // Global stuff
+  var minTime, maxTime;
 
   var events = [];
   function load(csv_data) {
@@ -27,32 +37,22 @@
   }
 
   function initTime() {
-    var minTime, maxTime;
+    var windowWidth = leftOffset + stages.length * (eventWidth + eventPadding) + 'px';
     for (var i = 0; i < events.length; i++) {
       if (!minTime || events[i]['start'] < minTime) {
         minTime = events[i]['start'];
-        console.log("MIN: ");
-        console.log(events[i]['raw']);
-        console.log(minTime);
       }
       if (!maxTime || events[i]['end'] > maxTime) {
         maxTime = events[i]['end'];
       }
     }
 
-    console.log(minTime);
-    console.log("-----");
     var time = document.getElementById('time');
     var numSlots = (maxTime - minTime) / 1000 / 60 / 30;
     for (var i = 0; i < numSlots; i++) {
       var slot = document.createElement('div');
       slot.className = "time-slot";
-      console.log("millis: " + minTime.getTime());
       var slotDate = new Date(i * 30 * 60 * 1000 + minTime.getTime());
-
-      console.log(slotDate.toString());
-
-
       var hours = slotDate.getHours();
       var ampm = "am";
       if (hours >= 12) {
@@ -64,30 +64,121 @@
         hours = 12;
       }
 
-
-      slot.innerText = slotDate.getMonth() + "/" + slotDate.getDay() + " " + hours + ":" + (slotDate.getMinutes() + "0").slice(0, 2) + ampm;
+      slot.innerText = hours + ":" + (slotDate.getMinutes() + "0").slice(0, 2) + ampm;
+      slot.style.top = i * timeSlotHeight + "px";
+      slot.style.height = timeSlotHeight;
+      slot.style.width = windowWidth;
       time.appendChild(slot);
-      console.log(slot.innerText);
     }
+    time.style.height = window.innerHeight;
+
+    // NOW!
+    // Set scroll position
+    var shift = 2 * timeSlotHeight / 3;
+    var now = getNow();
+    var offset = timeSlotHeight * (now - minTime) / 1000 / 60 / 30 - shift;
+    time.scrollTop = offset;
+
+    // Draw a line for now.
+    var nowLine = document.getElementById('now');
+    nowLine.style.top = offset + shift + 'px';
+    nowLine.style.width = windowWidth;
+
+    onScroll();
+    time.addEventListener('scroll', onScroll);
+
+    // Make the stage headers.
+    for (var i = 0; i < stages.length; i++) {
+
+    }
+
+
+    // Make the events.
+    var eventsContainer = document.getElementById('events');
+    for (var i = 0; i < events.length; i++) {
+      var eventElement = document.createElement('div');
+      eventElement.className = 'event';
+      eventElement.style.width = eventWidth + 'px';
+
+      var height = timeSlotHeight * (events[i]['end'] - events[i]['start']) / 1000 / 60 / 30;
+      eventElement.style.height = height + 'px';
+
+      var top = timeSlotHeight * (events[i]['start'] - minTime) / 1000 / 60 / 30;
+      eventElement.style.top = top + 'px';
+
+      var stage = stages.indexOf(events[i]['stage']);
+
+      var left = leftOffset + (eventWidth + eventPadding) * stage;
+      eventElement.style.left = left + 'px';
+
+      eventElement.innerText = events[i]['artist'];
+      eventElement.style.backgroundColor = colors[stage];
+
+      eventsContainer.appendChild(eventElement);
+    }
+  }
+
+  var daysofweek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  function onScroll() {
+    var time = document.getElementById('time');
+
+    var edgeDate = new Date(minTime.getTime() + 30 * 60 * 1000 * time.scrollTop / timeSlotHeight);
+    document.getElementById('day').style.width = leftOffset - 4 + 'px';
+    document.getElementById('day').innerText = daysofweek[edgeDate.getDay()];
+  }
+
+  function getNow() {
+    var d = new Date("2016-08-04T20:12:00");
+    d.setTime(d.getTime() + 4 * 60 * 60 * 1000);
+    return d;
   }
 </script>
 <script src="funkschedule.js"></script>
 <style type="text/css">
   body {
-    font-family: Open Sans, Helvetica;
+    font-family: Roboto;
   }
   .time-slot {
-    height: 200px;
     border-bottom: 1px solid #ccc;
     font-size: 40px;
+    position: absolute;
     margin-bottom: -1px;
-
+  }
+  .event {
+    opacity: .5;
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.37);
+    border: 2px solid #999;
+    font-size: 40px;
+    font-weight: bold;
+    position: absolute;
   }
   #time {
+    overflow: auto;
+    position: relative;
+    max-height: 100vh;
+  }
+  #now {
+    border-bottom: 4px solid #888;
+    position: absolute;
+    height: 2px;
+  }
+  #day {
+    background-color: #ddd;
+    font-size: 40px;
+    height: 40px;
+    padding: 5px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    font-weight: bold;
   }
 </style>
 
 <div id="schedule">
   <div id="time">
+    <div id="day"></div>
+    <div id="now"></div>
+    <div id="events"></div>
   </div>
 </div>
