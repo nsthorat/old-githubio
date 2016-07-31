@@ -176,6 +176,7 @@
     console.log("startOffset : " + startOffset + ", event: " + e.changedTouches[0].pageX + ", " + startSwipe);
     eventsOffset = startOffset + (e.changedTouches[0].pageX - startSwipe);
     console.log("total offset: " + eventsOffset);
+    e.stopPropagation();
   }
 
   var daysofweek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -214,10 +215,10 @@
     margin-bottom: -1px;
   }
   .time-slot {
-    background-color: white;
+    background-color: rgba(255, 255, 255, .7);
     font-size: 40px;
     position: absolute;
-    z-index:100;
+    z-index: 100;
   }
 
   .event {
