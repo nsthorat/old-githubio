@@ -5,7 +5,7 @@
   // Place all the events.
   var leftOffset = 200;
   var eventWidth = window.innerWidth - leftOffset;
-  var eventPadding = 10;
+  var eventPadding = 20;
   var stages = ["Amphitheatre", "Fractal Forest", "Village", "Living Room", "Pagoda", "Grove", "Grove - Workshops"];
   var colors = ["rgb(200, 200, 220)", "#9CCC65", "#FFCC80", "#80CBC4", "#EF9A9A", "#FFCC80", "#FFAB91"]
 
@@ -108,13 +108,18 @@
     eventsContainer.style.left = leftOffset + 'px';
     eventsContainer.style.width = windowWidth;
 
-    var stagesElem = document.getElementById('stages');
+    var stagesContainer = document.getElementById('stages');
+    stagesContainer.style.width = windowWidth - leftOffset + 'px';
+    stagesContainer.style.left = leftOffset + 'px';
+
+
+    var stagesElem = document.getElementById('stages-scroll');
     // Make the stage headers.
     for (var i = 0; i < stages.length; i++) {
       var stageHeader = document.createElement('div');
       stageHeader.className = 'stage';
       stageHeader.innerText = stages[i];
-      stageHeader.style.left = leftOffset + (eventPadding + eventWidth) * i;
+      stageHeader.style.left =  (eventPadding + eventWidth) * i;
       stageHeader.style.width = eventWidth + eventPadding + 'px';
 
       stagesElem.appendChild(stageHeader);
@@ -124,7 +129,7 @@
     for (var i = 0; i < events.length; i++) {
       var eventElement = document.createElement('div');
       eventElement.className = 'event';
-      eventElement.style.width = eventWidth + 'px';
+      eventElement.style.width = eventWidth - eventPadding + 'px';
 
       var height = timeSlotHeight * (events[i]['end'] - events[i]['start'] - 80000) / 1000 / 60 / 30;
       eventElement.style.height = height + 'px';
@@ -172,11 +177,10 @@
 
   }
   function handleMove(e) {
-    console.log(e);
-    console.log("startOffset : " + startOffset + ", event: " + e.changedTouches[0].pageX + ", " + startSwipe);
-    eventsOffset = startOffset + (e.changedTouches[0].pageX - startSwipe);
-    console.log("total offset: " + eventsOffset);
-    e.stopPropagation();
+   // console.log(e);
+    //console.log("startOffset : " + startOffset + ", event: " + e.changedTouches[0].pageX + ", " + startSwipe);
+    eventsOffset = Math.min(startOffset, startOffset + (e.changedTouches[0].pageX - startSwipe));
+    //console.log("total offset: " + eventsOffset);
   }
 
   var daysofweek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -199,6 +203,9 @@
     eventsElement.style.left = eventsOffset + 'px';
     //console.log("eventsOffset: " + eventsOffset);
 
+    var stageScroll = document.getElementById('stages-scroll');
+    stageScroll.style.left = eventsOffset - leftOffset + 'px';
+
     //console.log("animating...");
     requestAnimationFrame(animate);
   }
@@ -216,7 +223,7 @@
   }
   .time-slot {
     background-color: rgba(255, 255, 255, .7);
-    font-size: 40px;
+    font-size: 45px;
     position: absolute;
     z-index: 100;
   }
@@ -225,19 +232,27 @@
     opacity: .5;
     box-shadow: 0 1px 4px 0 rgba(0,0,0,0.37);
     border: 2px solid #999;
-    font-size: 40px;
+    font-size: 80px;
     font-weight: bold;
     position: absolute;
   }
   .stage {
-    padding: 5px 0 5px 5px;
+    padding: 7px 0 7px 7px;
     opacity: .7;
     background-color: rgb(200, 220, 200);
     border-bottom: 1px solid rgb(200, 200, 220);
-    position: fixed;
-    font-size: 40px;
-    height: 40px;
+    font-size: 80px;
+    height: 80px;
     top: 0;
+    z-index: 200;
+    position: absolute;
+  }
+  #stages {
+    z-index: 200;
+    position: fixed;
+  }
+  #stages-scroll {
+    position:relative;
   }
   #time {
     padding-left: 5px;
@@ -256,14 +271,15 @@
     opacity: .7;
     border-bottom: 1px solid rgb(200, 200, 220);
     background-color: rgb(210, 210, 210);
-    font-size: 40px;
-    height: 40px;
+    font-size: 80px;
+    height: 80px;
     padding: 5px 0 5px 5px;
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 2;
+    z-index: 200;
     font-weight: bold;
+    text-align: center;
   }
   #events {
     position: relative;
@@ -271,9 +287,7 @@
     left: 0;
     z-index: 100;
   }
-  #events-outer {
 
-  }
   #events-scroll {
     position: relative;
     transform: translate3d(0,0,0);
@@ -292,9 +306,11 @@
     <div id="day"></div>
     <div id="now"></div>
     <div id="events">
-      <div id="events-scroll">
-        <div id="stages">
-        </div>
+      <div id="events-scroll"></div>
+    </div>
+    <div id="stages">
+      <div id="stages-scroll">
+
       </div>
     </div>
     <div id="time-slots-lines"></div>
