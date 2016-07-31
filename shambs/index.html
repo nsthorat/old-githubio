@@ -141,7 +141,7 @@
 
   var startSwipe;
   // relative to current swipe
-  var startOffset = 0;
+  var startOffset = leftOffset;
   var eventsOffset;
   function handleStart(e) {
     var eventsElement = document.getElementById('events');
@@ -250,6 +250,9 @@
     top: 0;
     left: 0;
     z-index: 100;
+  }
+  #events-outer {
+    
   }
   #events-scroll {
     position: relative;
