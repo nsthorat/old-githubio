@@ -147,9 +147,8 @@
 
     console.log("START:");
     console.log(e);
-    startSwipe = e.changedTouches[0];
+    startSwipe = e.changedTouches[0].pageX;
     startOffset = eventsElement.offsetLeft;
- 
   }
   function handleEnd(e) {
     var eventsElement = document.getElementById('events');
@@ -160,8 +159,8 @@
   }
   function handleMove(e) {
     console.log(e);
-    console.log("startOffset : " + startOffset + ", event: " + e.changedTouches[0].pageX + ", " + startSwipe.pageX);
-    eventsOffset = startOffset + (e.changedTouches[0].pageX - startSwipe.pageX);
+    console.log("startOffset : " + startOffset + ", event: " + e.changedTouches[0].pageX + ", " + startSwipe;
+    eventsOffset = startOffset + (e.changedTouches[0].pageX - startSwipe);
     console.log("total offset: " + eventsOffset);
   }
 
