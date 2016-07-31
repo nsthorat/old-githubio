@@ -48,11 +48,18 @@
     }
 
     var time = document.getElementById('time');
+    var timeSlotLines = document.getElementById('time-slots-lines');
     var timeSlots = document.getElementById('time-slots');
     var numSlots = (maxTime - minTime) / 1000 / 60 / 30;
     for (var i = 0; i < numSlots; i++) {
+      // LINES
       var slot = document.createElement('div');
-      slot.className = "time-slot";
+      slot.className = "time-slot-line";
+      slot.style.top = i * timeSlotHeight + "px";
+      slot.style.height = timeSlotHeight;
+      slot.style.width = windowWidth;
+
+      // TEXT
       var slotDate = new Date(i * 30 * 60 * 1000 + minTime.getTime());
       var hours = slotDate.getHours();
       var ampm = "am";
@@ -65,13 +72,19 @@
         hours = 12;
       }
 
-      slot.innerText = hours + ":" + (slotDate.getMinutes() + "0").slice(0, 2) + ampm;
-      slot.style.top = i * timeSlotHeight + "px";
-      slot.style.height = timeSlotHeight;
-      slot.style.width = windowWidth;
-      timeSlots.appendChild(slot);
+
+      var timeSlot = document.createElement('div');
+      timeSlot.className = 'time-slot';
+      timeSlot.innerText = hours + ":" + (slotDate.getMinutes() + "0").slice(0, 2) + ampm;
+      timeSlot.style.top = i * timeSlotHeight + "px";
+      timeSlot.style.height = timeSlotHeight;
+      timeSlot.style.width = leftOffset;
+
+      timeSlots.appendChild(timeSlot);
+
+      timeSlotLines.appendChild(slot);
     }
-    timeSlots.style.height = window.innerHeight;
+    timeSlotLines.style.height = window.innerHeight;
 
     // NOW!
     // Set scroll position
@@ -195,12 +208,18 @@
     font-family: Arial;
     margin: 0;
   }
-  .time-slot {
+  .time-slot-line {
     border-bottom: 1px solid #ccc;
-    font-size: 40px;
     position: absolute;
     margin-bottom: -1px;
   }
+  .time-slot {
+    background-color: white;
+    font-size: 40px;
+    position: absolute;
+    z-index:100;
+  }
+
   .event {
     opacity: .5;
     box-shadow: 0 1px 4px 0 rgba(0,0,0,0.37);
@@ -252,12 +271,18 @@
     z-index: 100;
   }
   #events-outer {
-    
+
   }
   #events-scroll {
     position: relative;
     transform: translate3d(0,0,0);
     -webkit-transform: translate3d(0,0,0);
+  }
+  #time-slot-lines {
+
+  }
+  #time-slots {
+    z-index: 200;
   }
 </style>
 
@@ -271,8 +296,7 @@
         </div>
       </div>
     </div>
-    <div id="time-slots">
-
-    </div>
+    <div id="time-slots-lines"></div>
+    <div id="time-slots"></div>
   </div>
 </div>
