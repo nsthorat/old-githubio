@@ -178,9 +178,14 @@
   }
   function handleMove(e) {
    // console.log(e);
-    //console.log("startOffset : " + startOffset + ", event: " + e.changedTouches[0].pageX + ", " + startSwipe);
-    eventsOffset = Math.min(startOffset, startOffset + (e.changedTouches[0].pageX - startSwipe));
-    //console.log("total offset: " + eventsOffset);
+    console.log("startOffset : " + startOffset + ", event: " + e.changedTouches[0].pageX + ", " + startSwipe);
+    eventsOffset = startOffset + (e.changedTouches[0].pageX - startSwipe);
+    console.log("total offset: " + eventsOffset);
+
+    if (eventsOffset > leftOffset) {
+      eventsOffset = leftOffset;
+    }
+    //eventsOffset = startOffset + (e.changedTouches[0].pageX - startSwipe);
   }
 
   var daysofweek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -201,7 +206,7 @@
   function animate() {
     var eventsElement = document.getElementById('events-scroll');
     eventsElement.style.left = eventsOffset + 'px';
-    //console.log("eventsOffset: " + eventsOffset);
+    console.log("eventsOffset: " + eventsOffset);
 
     var stageScroll = document.getElementById('stages-scroll');
     stageScroll.style.left = eventsOffset - leftOffset + 'px';
@@ -238,7 +243,7 @@
   }
   .stage {
     padding: 7px 0 7px 7px;
-    opacity: .7;
+    opacity: .9;
     background-color: rgb(200, 220, 200);
     border-bottom: 1px solid rgb(200, 200, 220);
     font-size: 80px;
@@ -310,7 +315,6 @@
     </div>
     <div id="stages">
       <div id="stages-scroll">
-
       </div>
     </div>
     <div id="time-slots-lines"></div>
