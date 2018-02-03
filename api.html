@@ -1,0 +1,2137 @@
+<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.cyan-teal.min.css" />
+<style>
+  body {
+    margin: 10px;
+  }
+  .documentation {
+    white-space: pre;
+  }
+  a {
+    color: inherit;
+  }
+</style>
+
+<h2>deeplearn.js API Reference</h2>
+
+  <div class="heading">
+    <h3>Tensors</h3>
+      <div class="subheading">
+        <h4>Creation</h4>
+          <div class="method">
+            <h5># <a name="dl.ones" href="#dl.ones">dl.ones</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;array_ops.ts#L28" target=_blank>&#x2F;src&#x2F;math&#x2F;array_ops.ts</a><br>
+            <div class="documentation">Creates a ndarray of ones with the specified shape. </div>
+            <ul>
+                <li class="parameter">
+                  shape: 
+                </li>
+                <li class="parameter">
+                  dtype: 
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.zeros" href="#dl.zeros">dl.zeros</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;array_ops.ts#L37" target=_blank>&#x2F;src&#x2F;math&#x2F;array_ops.ts</a><br>
+            <div class="documentation">Creates a ndarray of zeros with the specified shape. </div>
+            <ul>
+                <li class="parameter">
+                  shape: 
+                </li>
+                <li class="parameter">
+                  dtype: 
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.onesLike" href="#dl.onesLike">dl.onesLike</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;array_ops.ts#L48" target=_blank>&#x2F;src&#x2F;math&#x2F;array_ops.ts</a><br>
+            <div class="documentation">Creates a ndarray of ones with the same shape as the specified ndarray.</div>
+            <ul>
+                <li class="parameter">
+                  x: 
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.zerosLike" href="#dl.zerosLike">dl.zerosLike</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;array_ops.ts#L57" target=_blank>&#x2F;src&#x2F;math&#x2F;array_ops.ts</a><br>
+            <div class="documentation">Creates a ndarray of zeros with the same shape as the specified ndarray.</div>
+            <ul>
+                <li class="parameter">
+                  x: 
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.clone" href="#dl.clone">dl.clone</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;array_ops.ts#L64" target=_blank>&#x2F;src&#x2F;math&#x2F;array_ops.ts</a><br>
+            <div class="documentation">Creates a ndarray with the same values&#x2F;shape as the specified ndarray. </div>
+            <ul>
+                <li class="parameter">
+                  x: 
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.randNormal" href="#dl.randNormal">dl.randNormal</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;array_ops.ts#L70" target=_blank>&#x2F;src&#x2F;math&#x2F;array_ops.ts</a><br>
+            <div class="documentation"></div>
+            <ul>
+                <li class="parameter">
+                  shape: 
+                </li>
+                <li class="parameter">
+                  mean: 
+                </li>
+                <li class="parameter">
+                  stdDev: 
+                </li>
+                <li class="parameter">
+                  dtype: 
+                </li>
+                <li class="parameter">
+                  seed: 
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.truncatedNormal" href="#dl.truncatedNormal">dl.truncatedNormal</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;array_ops.ts#L83" target=_blank>&#x2F;src&#x2F;math&#x2F;array_ops.ts</a><br>
+            <div class="documentation"></div>
+            <ul>
+                <li class="parameter">
+                  shape: 
+                </li>
+                <li class="parameter">
+                  mean: 
+                </li>
+                <li class="parameter">
+                  stdDev: 
+                </li>
+                <li class="parameter">
+                  dtype: 
+                </li>
+                <li class="parameter">
+                  seed: 
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.randUniform" href="#dl.randUniform">dl.randUniform</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;array_ops.ts#L96" target=_blank>&#x2F;src&#x2F;math&#x2F;array_ops.ts</a><br>
+            <div class="documentation"></div>
+            <ul>
+                <li class="parameter">
+                  shape: 
+                </li>
+                <li class="parameter">
+                  a: 
+                </li>
+                <li class="parameter">
+                  b: 
+                </li>
+                <li class="parameter">
+                  dtype: 
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.rand" href="#dl.rand">dl.rand</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;array_ops.ts#L103" target=_blank>&#x2F;src&#x2F;math&#x2F;array_ops.ts</a><br>
+            <div class="documentation"></div>
+            <ul>
+                <li class="parameter">
+                  shape: 
+                </li>
+                <li class="parameter">
+                  randFunction: 
+                </li>
+                <li class="parameter">
+                  dtype: 
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.multinomial" href="#dl.multinomial">dl.multinomial</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;array_ops.ts#L137" target=_blank>&#x2F;src&#x2F;math&#x2F;array_ops.ts</a><br>
+            <div class="documentation">Draws samples from a multinomial distribution.</div>
+            <ul>
+                <li class="parameter">
+                  probabilities: 1D array with normalized outcome probabilities, or
+2D array of shape &#x60;[batchSize, numOutcomes]&#x60;.
+                </li>
+                <li class="parameter">
+                  numSamples: Number of samples to draw for each row slice.
+                </li>
+                <li class="parameter">
+                  seed: Optional. The seed number.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.oneHot" href="#dl.oneHot">dl.oneHot</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;array_ops.ts#L180" target=_blank>&#x2F;src&#x2F;math&#x2F;array_ops.ts</a><br>
+            <div class="documentation">Returns a one-hot array. The locations represented by &#x60;indices&#x60; take
+value &#x60;onValue&#x60; (defaults to 1), while all other locations take value
+&#x60;offValue&#x60; (defaults to 0).</div>
+            <ul>
+                <li class="parameter">
+                  indices: 1D Array of indices.
+                </li>
+                <li class="parameter">
+                  depth: The depth of the one hot dimension.
+                </li>
+                <li class="parameter">
+                  onValue: A number used to fill in output when the index matches the
+location.
+                </li>
+                <li class="parameter">
+                  offValue: A number used to fill in the output when the index does
+not match the location.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.fromPixels" href="#dl.fromPixels">dl.fromPixels</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;array_ops.ts#L191" target=_blank>&#x2F;src&#x2F;math&#x2F;array_ops.ts</a><br>
+            <div class="documentation"></div>
+            <ul>
+                <li class="parameter">
+                  pixels: 
+                </li>
+                <li class="parameter">
+                  numChannels: 
+                </li>
+            </ul>
+          </div>
+      </div>
+      <div class="subheading">
+        <h4>Transformations</h4>
+          <div class="method">
+            <h5># <a name="dl.reshape" href="#dl.reshape">dl.reshape</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;array_ops.ts#L204" target=_blank>&#x2F;src&#x2F;math&#x2F;array_ops.ts</a><br>
+            <div class="documentation">Reshapes the array. </div>
+            <ul>
+                <li class="parameter">
+                  x: 
+                </li>
+                <li class="parameter">
+                  newShape: 
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.cast" href="#dl.cast">dl.cast</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;array_ops.ts#L224" target=_blank>&#x2F;src&#x2F;math&#x2F;array_ops.ts</a><br>
+            <div class="documentation">Casts a tensor to a new type. If the new type matches the old type,
+this is a no-op.</div>
+            <ul>
+                <li class="parameter">
+                  x: 
+                </li>
+                <li class="parameter">
+                  newDType: 
+                </li>
+            </ul>
+          </div>
+      </div>
+      <div class="subheading">
+        <h4>Slicing and Joining</h4>
+          <div class="method">
+            <h5># <a name="dl.tile" href="#dl.tile">dl.tile</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;array_ops.ts#L246" target=_blank>&#x2F;src&#x2F;math&#x2F;array_ops.ts</a><br>
+            <div class="documentation">Construct an array by repeating it the number of times given by reps.
+
+This operation creates a new array by replicating &#x60;input&#x60; &#x60;reps&#x60;
+times. The output tensor&#39;s i&#39;th dimension has &#x60;input.shape[i] *
+reps[i]&#x60; elements, and the values of &#x60;input&#x60; are replicated
+&#x60;reps[i]&#x60; times along the i&#39;th dimension. For example, tiling
+&#x60;[a, b, c, d]&#x60; by &#x60;[2]&#x60; produces &#x60;[a, b, c, d, a, b, c, d]&#x60;.</div>
+            <ul>
+                <li class="parameter">
+                  x: The array to transpose.
+                </li>
+                <li class="parameter">
+                  reps: Determines the number of replications per dimension.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.gather" href="#dl.gather">dl.gather</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;array_ops.ts#L263" target=_blank>&#x2F;src&#x2F;math&#x2F;array_ops.ts</a><br>
+            <div class="documentation">Gather slices from array &#x60;x&#x60;&#39;s axis &#x60;axis&#x60; according to &#x60;indices&#x60;</div>
+            <ul>
+                <li class="parameter">
+                  x: The array to transpose.
+                </li>
+                <li class="parameter">
+                  indices: The indices of the values to extract.
+                </li>
+                <li class="parameter">
+                  axis: Optional. The axis over which to select values. Defaults to 0.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.pad1D" href="#dl.pad1D">dl.pad1D</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;array_ops.ts#L283" target=_blank>&#x2F;src&#x2F;math&#x2F;array_ops.ts</a><br>
+            <div class="documentation">Pads a Array1D.
+
+This operation will pad an array according to the &#x60;paddings&#x60; you specify.
+
+This operation currently only implements the &#x60;CONSTANT&#x60; mode from
+Tensorflow&#39;s &#x60;pad&#x60; operation.</div>
+            <ul>
+                <li class="parameter">
+                  x: The array to pad.
+                </li>
+                <li class="parameter">
+                  paddings: A tuple of ints [padLeft, padRight], how much to pad on the
+left and right side of the array.
+                </li>
+                <li class="parameter">
+                  constantValue: The scalar pad value to use. Defaults to 0.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.pad2D" href="#dl.pad2D">dl.pad2D</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;array_ops.ts#L308" target=_blank>&#x2F;src&#x2F;math&#x2F;array_ops.ts</a><br>
+            <div class="documentation">Pads a Array2D.
+
+This operation will pad an array according to the &#x60;paddings&#x60; you specify.
+
+This operation currently only implements the &#x60;CONSTANT&#x60; mode from
+Tensorflow&#39;s &#x60;pad&#x60; operation.</div>
+            <ul>
+                <li class="parameter">
+                  x: The array to pad.
+                </li>
+                <li class="parameter">
+                  paddings: A pair of tuple ints
+[[padTop, padBottom], [padLeft, padRight]], how much to pad on the
+array.
+                </li>
+                <li class="parameter">
+                  constantValue: The scalar pad value to use. Defaults to 0.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.concat1D" href="#dl.concat1D">dl.concat1D</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;concat.ts#L38" target=_blank>&#x2F;src&#x2F;math&#x2F;concat.ts</a><br>
+            <div class="documentation">Concatenates two 1D arrays.
+
+For example, if:
+A: shape(3) &#x3D; |r1, g1, b1|
+B: shape(2) &#x3D; |r2, g2|
+C &#x3D; concat1D(A, B) &#x3D;&#x3D; |r1, g1, b1, r2, g2|</div>
+            <ul>
+                <li class="parameter">
+                  a: The first array.
+                </li>
+                <li class="parameter">
+                  b: The second array.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.concat2D" href="#dl.concat2D">dl.concat2D</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;concat.ts#L72" target=_blank>&#x2F;src&#x2F;math&#x2F;concat.ts</a><br>
+            <div class="documentation">Concatenates two 2D arrays along a given axis.
+
+For example, if:
+A: shape(2, 3) &#x3D; | r1, g1, b1 |
+                  | r2, g2, b2 |
+
+B: shape(2, 3) &#x3D; | r3, g3, b3 |
+                  | r4, g4, b4 |
+
+C &#x3D; concat2D(A, B, axis)
+
+if axis &#x3D; 0:
+C: shape(4, 3) &#x3D; | r1, g1, b1 |
+                  | r2, g2, b2 |
+                  | r3, g3, b3 |
+                  | r4, g4, b4 |
+
+if axis &#x3D; 1:
+C &#x3D; shape(2, 6) &#x3D; | r1, g1, b1, r3, g3, b3 |
+                   | r2, g2, b2, r4, g4, b4 |</div>
+            <ul>
+                <li class="parameter">
+                  a: The first array.
+                </li>
+                <li class="parameter">
+                  b: The second array.
+                </li>
+                <li class="parameter">
+                  axis: The axis to concatenate along.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.concat3D" href="#dl.concat3D">dl.concat3D</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;concat.ts#L109" target=_blank>&#x2F;src&#x2F;math&#x2F;concat.ts</a><br>
+            <div class="documentation">Concatenates two 3D ndarrays along a given axis.
+
+For example, if:
+A: shape(2, 1, 3) &#x3D; | r1, g1, b1 |
+                     | r2, g2, b2 |
+
+B: shape(2, 1, 3) &#x3D; | r3, g3, b3 |
+                     | r4, g4, b4 |
+
+C &#x3D; concat3D(A, B, axis)
+
+if axis &#x3D; 0:
+C: shape(4, 1, 3) &#x3D; | r1, g1, b1 |
+                     | r2, g2, b2 |
+                     | r3, g3, b3 |
+                     | r4, g4, b4 |
+
+if axis &#x3D; 1:
+C: shape(2, 2, 3) &#x3D; | r1, g1, b1, r3, g3, b3 |
+                     | r2, g2, b2, r4, g4, b4 |
+
+if axis &#x3D; 2:
+C &#x3D; shape(2, 1, 6) &#x3D; | r1, g1, b1, r3, g3, b3 |
+                      | r2, g2, b2, r4, g4, b4 |</div>
+            <ul>
+                <li class="parameter">
+                  a: The first array to concat.
+                </li>
+                <li class="parameter">
+                  b: The second array to conat.
+                </li>
+                <li class="parameter">
+                  axis: The axis to concate along.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.concat4D" href="#dl.concat4D">dl.concat4D</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;concat.ts#L124" target=_blank>&#x2F;src&#x2F;math&#x2F;concat.ts</a><br>
+            <div class="documentation">Concatenates two 4D ndarrays along a given axis. See math.concat2D() for
+documentation.</div>
+            <ul>
+                <li class="parameter">
+                  a: The first array to concat.
+                </li>
+                <li class="parameter">
+                  b: The second array to conat.
+                </li>
+                <li class="parameter">
+                  axis: The axis to concate along.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.concat" href="#dl.concat">dl.concat</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;concat.ts#L130" target=_blank>&#x2F;src&#x2F;math&#x2F;concat.ts</a><br>
+            <div class="documentation"></div>
+            <ul>
+                <li class="parameter">
+                  a: 
+                </li>
+                <li class="parameter">
+                  b: 
+                </li>
+                <li class="parameter">
+                  axis: 
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.reverse1D" href="#dl.reverse1D">dl.reverse1D</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;reverse.ts#L31" target=_blank>&#x2F;src&#x2F;math&#x2F;reverse.ts</a><br>
+            <div class="documentation">Reverses a 1D array</div>
+            <ul>
+                <li class="parameter">
+                  x: The input array.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.reverse2D" href="#dl.reverse2D">dl.reverse2D</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;reverse.ts#L47" target=_blank>&#x2F;src&#x2F;math&#x2F;reverse.ts</a><br>
+            <div class="documentation">Reverses a 2D array along a specified axis</div>
+            <ul>
+                <li class="parameter">
+                  x: The input array.
+                </li>
+                <li class="parameter">
+                  axis: The set of dimensions to reverse. Must be in the
+range [-rank(x), rank(x)).
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.reverse3D" href="#dl.reverse3D">dl.reverse3D</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;reverse.ts#L64" target=_blank>&#x2F;src&#x2F;math&#x2F;reverse.ts</a><br>
+            <div class="documentation">Reverses a 3D array along a specified axis</div>
+            <ul>
+                <li class="parameter">
+                  x: The input array.
+                </li>
+                <li class="parameter">
+                  axis: The set of dimensions to reverse. Must be in the
+range [-rank(x), rank(x)).
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.reverse4D" href="#dl.reverse4D">dl.reverse4D</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;reverse.ts#L81" target=_blank>&#x2F;src&#x2F;math&#x2F;reverse.ts</a><br>
+            <div class="documentation">Reverses a 4D array along a specified axis</div>
+            <ul>
+                <li class="parameter">
+                  x: The input array.
+                </li>
+                <li class="parameter">
+                  axis: The set of dimensions to reverse. Must be in the
+range [-rank(x), rank(x)).
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.reverse" href="#dl.reverse">dl.reverse</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;reverse.ts#L99" target=_blank>&#x2F;src&#x2F;math&#x2F;reverse.ts</a><br>
+            <div class="documentation">Reverses an NDArray along a specified axis.</div>
+            <ul>
+                <li class="parameter">
+                  x: The input array.
+                </li>
+                <li class="parameter">
+                  axis: The set of dimensions to reverse. Must be in the
+range [-rank(x), rank(x)).
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.slice1D" href="#dl.slice1D">dl.slice1D</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;slice.ts#L34" target=_blank>&#x2F;src&#x2F;math&#x2F;slice.ts</a><br>
+            <div class="documentation">Extracts a 1D slice from 1D array starting at coordinates &#x60;begin&#x60; and is
+of length &#x60;size&#x60;.</div>
+            <ul>
+                <li class="parameter">
+                  x: The input array to slice from.
+                </li>
+                <li class="parameter">
+                  begin: The offset to start the slice from.
+                </li>
+                <li class="parameter">
+                  size: The size of the slice.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.slice2D" href="#dl.slice2D">dl.slice2D</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;slice.ts#L50" target=_blank>&#x2F;src&#x2F;math&#x2F;slice.ts</a><br>
+            <div class="documentation">Extracts a 2D slice from a 2D array starting at coordinates &#x60;begin&#x60; and
+is of size &#x60;size&#x60;.</div>
+            <ul>
+                <li class="parameter">
+                  x: The input array to slice from.
+                </li>
+                <li class="parameter">
+                  begin: The [row, col] 2d coordinates to start the slice from.
+                </li>
+                <li class="parameter">
+                  size: The size of the slice.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.slice3D" href="#dl.slice3D">dl.slice3D</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;slice.ts#L67" target=_blank>&#x2F;src&#x2F;math&#x2F;slice.ts</a><br>
+            <div class="documentation">Extracts a 3D slice from a 3D array starting at coordinates &#x60;begin&#x60; and
+is of size &#x60;size&#x60;.</div>
+            <ul>
+                <li class="parameter">
+                  x: The input array to slice from.
+                </li>
+                <li class="parameter">
+                  begin: The [row, col, depth] 3d coordinates to start the slice from.
+                </li>
+                <li class="parameter">
+                  size: The size of the slice.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.slice4D" href="#dl.slice4D">dl.slice4D</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;slice.ts#L86" target=_blank>&#x2F;src&#x2F;math&#x2F;slice.ts</a><br>
+            <div class="documentation">Extracts a 4D slice from a 4D array starting at coordinates &#x60;begin&#x60; and
+is of size &#x60;size&#x60;.</div>
+            <ul>
+                <li class="parameter">
+                  x: The input array to slice from.
+                </li>
+                <li class="parameter">
+                  begin: The [row, col, depth, depth2] 4d coordinates to start the
+slice from.
+                </li>
+                <li class="parameter">
+                  size: The size of the slice.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.slice" href="#dl.slice">dl.slice</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;slice.ts#L96" target=_blank>&#x2F;src&#x2F;math&#x2F;slice.ts</a><br>
+            <div class="documentation"></div>
+            <ul>
+                <li class="parameter">
+                  x: 
+                </li>
+                <li class="parameter">
+                  begin: 
+                </li>
+                <li class="parameter">
+                  size: 
+                </li>
+            </ul>
+          </div>
+      </div>
+  </div>
+  <div class="heading">
+    <h3>Operations</h3>
+      <div class="subheading">
+        <h4>Arithmetic</h4>
+          <div class="method">
+            <h5># <a name="dl.add" href="#dl.add">dl.add</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;binary_ops.ts#L33" target=_blank>&#x2F;src&#x2F;math&#x2F;binary_ops.ts</a><br>
+            <div class="documentation">Adds two NDArrays element-wise, A + B. Supports broadcasting.
+For a stricter version without broadcasting use addStrict().</div>
+            <ul>
+                <li class="parameter">
+                  a: The first &#x60;NDArray&#x60; to add.
+                </li>
+                <li class="parameter">
+                  b: The second &#x60;NDArray&#x60; to add. Must have the same type as &#x60;a&#x60;.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.addStrict" href="#dl.addStrict">dl.addStrict</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;binary_ops.ts#L69" target=_blank>&#x2F;src&#x2F;math&#x2F;binary_ops.ts</a><br>
+            <div class="documentation">Adds two NDArrays element-wise, A + B. Inputs must
+be the same shape. For broadcasting support, use add() instead.</div>
+            <ul>
+                <li class="parameter">
+                  a: The first NDArray to multiply element-wise.
+                </li>
+                <li class="parameter">
+                  b: The second NDArray to multiply element-wise.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.sub" href="#dl.sub">dl.sub</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;binary_ops.ts#L83" target=_blank>&#x2F;src&#x2F;math&#x2F;binary_ops.ts</a><br>
+            <div class="documentation">Subtracts two NDArrays element-wise, A - B. Supports broadcasting.
+For a stricter version without broadcasting use subStrict().</div>
+            <ul>
+                <li class="parameter">
+                  a: The first &#x60;NDArray&#x60;.
+                </li>
+                <li class="parameter">
+                  b: The second &#x60;NDArray&#x60;. Must have the same dtype as &#x60;a&#x60;.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.subStrict" href="#dl.subStrict">dl.subStrict</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;binary_ops.ts#L119" target=_blank>&#x2F;src&#x2F;math&#x2F;binary_ops.ts</a><br>
+            <div class="documentation">Subtracts two NDArrays element-wise, A - B. Inputs must
+be the same shape. For broadcasting support, use sub() instead.</div>
+            <ul>
+                <li class="parameter">
+                  a: The first NDArray to multiply element-wise.
+                </li>
+                <li class="parameter">
+                  b: The second NDArray to multiply element-wise.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.pow" href="#dl.pow">dl.pow</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;binary_ops.ts#L137" target=_blank>&#x2F;src&#x2F;math&#x2F;binary_ops.ts</a><br>
+            <div class="documentation">Computes the power of one value to another. Supports broadcasting.
+Given a tensor x and a tensor y, this operation computes x^y for
+corresponding elements in x and y. For example:
+x &#x3D; tf.constant([[2, 2], [3, 3]])
+y &#x3D; tf.constant([[8, 16], [2, 3]])
+pow(x, y)  # [[256, 65536], [9, 27]]</div>
+            <ul>
+                <li class="parameter">
+                  base: The base NDArray to pow element-wise.
+                </li>
+                <li class="parameter">
+                  exp: The exponent NDArray to pow element-wise.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.powStrict" href="#dl.powStrict">dl.powStrict</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;binary_ops.ts#L174" target=_blank>&#x2F;src&#x2F;math&#x2F;binary_ops.ts</a><br>
+            <div class="documentation">Computes the power of one value to another. Inputs must
+be the same shape. For broadcasting support, use pow() instead.</div>
+            <ul>
+                <li class="parameter">
+                  base: The base NDArray to pow element-wise.
+                </li>
+                <li class="parameter">
+                  exp: The exponent NDArray to pow element-wise.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.mul" href="#dl.mul">dl.mul</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;binary_ops.ts#L188" target=_blank>&#x2F;src&#x2F;math&#x2F;binary_ops.ts</a><br>
+            <div class="documentation">Multiplies two NDArrays element-wise, A * B. Supports broadcasting.
+For a stricter version without broadcasting use mulStrict().</div>
+            <ul>
+                <li class="parameter">
+                  a: The first &#x60;NDArray&#x60;.
+                </li>
+                <li class="parameter">
+                  b: The second &#x60;NDArray&#x60;. Must have the same dtype as &#x60;a&#x60;.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.mulStrict" href="#dl.mulStrict">dl.mulStrict</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;binary_ops.ts#L232" target=_blank>&#x2F;src&#x2F;math&#x2F;binary_ops.ts</a><br>
+            <div class="documentation">Multiplies two NDArrays element-wise, A * B. Inputs must
+be the same shape. For broadcasting support, use mul().</div>
+            <ul>
+                <li class="parameter">
+                  a: The first &#x60;NDArray&#x60;.
+                </li>
+                <li class="parameter">
+                  b: The second &#x60;NDArray&#x60;. Must have the same dtype as &#x60;a&#x60;.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.div" href="#dl.div">dl.div</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;binary_ops.ts#L246" target=_blank>&#x2F;src&#x2F;math&#x2F;binary_ops.ts</a><br>
+            <div class="documentation">Divides two NDArrays element-wise, A &#x2F; B. Supports broadcasting.
+For a stricter version without broadcasting use divStrict().</div>
+            <ul>
+                <li class="parameter">
+                  a: The first &#x60;NDArray&#x60;.
+                </li>
+                <li class="parameter">
+                  b: The second &#x60;NDArray&#x60;. Must have the same dtype as &#x60;a&#x60;.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.divStrict" href="#dl.divStrict">dl.divStrict</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;binary_ops.ts#L281" target=_blank>&#x2F;src&#x2F;math&#x2F;binary_ops.ts</a><br>
+            <div class="documentation">Divides two NDArrays element-wise, A &#x2F; B. Inputs must
+be the same shape. For broadcasting support, use div() instead.</div>
+            <ul>
+                <li class="parameter">
+                  a: The first NDArray to multiply element-wise.
+                </li>
+                <li class="parameter">
+                  b: The second NDArray to multiply element-wise.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.minimum" href="#dl.minimum">dl.minimum</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;binary_ops.ts#L315" target=_blank>&#x2F;src&#x2F;math&#x2F;binary_ops.ts</a><br>
+            <div class="documentation">Returns the min of a and b (&#x60;a &lt; b ? a : b&#x60;) element-wise.
+Supports broadcasting.</div>
+            <ul>
+                <li class="parameter">
+                  a: The first ndarray.
+                </li>
+                <li class="parameter">
+                  b: The second ndarray. Must have the same type as &#x60;a&#x60;.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.minimumStrict" href="#dl.minimumStrict">dl.minimumStrict</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;binary_ops.ts#L330" target=_blank>&#x2F;src&#x2F;math&#x2F;binary_ops.ts</a><br>
+            <div class="documentation">Returns the min of a and b (&#x60;a &lt; b ? a : b&#x60;) element-wise. Inputs must
+be the same shape. For broadcasting support, use minimum().</div>
+            <ul>
+                <li class="parameter">
+                  a: The first &#x60;NDArray&#x60;.
+                </li>
+                <li class="parameter">
+                  b: The second &#x60;NDArray&#x60;. Must have the same dtype as &#x60;a&#x60;.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.maximum" href="#dl.maximum">dl.maximum</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;binary_ops.ts#L344" target=_blank>&#x2F;src&#x2F;math&#x2F;binary_ops.ts</a><br>
+            <div class="documentation">Returns the max of a and b (&#x60;a &gt; b ? a : b&#x60;) element-wise.
+Supports broadcasting.</div>
+            <ul>
+                <li class="parameter">
+                  a: The first ndarray.
+                </li>
+                <li class="parameter">
+                  b: The second ndarray. Must have the same type as &#x60;a&#x60;.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.maximumStrict" href="#dl.maximumStrict">dl.maximumStrict</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;binary_ops.ts#L359" target=_blank>&#x2F;src&#x2F;math&#x2F;binary_ops.ts</a><br>
+            <div class="documentation">Returns the max of a and b (&#x60;a &gt; b ? a : b&#x60;) element-wise. Inputs must
+be the same shape. For broadcasting support, use maximum().</div>
+            <ul>
+                <li class="parameter">
+                  a: The first &#x60;NDArray&#x60;.
+                </li>
+                <li class="parameter">
+                  b: The second &#x60;NDArray&#x60;. Must have the same dtype as &#x60;a&#x60;.
+                </li>
+            </ul>
+          </div>
+      </div>
+      <div class="subheading">
+        <h4>Basic math</h4>
+          <div class="method">
+            <h5># <a name="dl.neg" href="#dl.neg">dl.neg</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;unary_ops.ts#L29" target=_blank>&#x2F;src&#x2F;math&#x2F;unary_ops.ts</a><br>
+            <div class="documentation">Computes -1 * A element-wise.</div>
+            <ul>
+                <li class="parameter">
+                  x: The input array.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.ceil" href="#dl.ceil">dl.ceil</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;unary_ops.ts#L43" target=_blank>&#x2F;src&#x2F;math&#x2F;unary_ops.ts</a><br>
+            <div class="documentation">Computes ceiling of input NDArray element-wise. y &#x3D; ceil(x)
+TODO(nsthorat): Make this return an int32 when we add rank as a
+generic.</div>
+            <ul>
+                <li class="parameter">
+                  x: The input NDArray.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.floor" href="#dl.floor">dl.floor</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;unary_ops.ts#L54" target=_blank>&#x2F;src&#x2F;math&#x2F;unary_ops.ts</a><br>
+            <div class="documentation">Computes floor of input NDArray element-wise. y &#x3D; floor(x).</div>
+            <ul>
+                <li class="parameter">
+                  x: The input NDArray.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.exp" href="#dl.exp">dl.exp</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;unary_ops.ts#L64" target=_blank>&#x2F;src&#x2F;math&#x2F;unary_ops.ts</a><br>
+            <div class="documentation">Computes exponential of the input NDArray element-wise. y &#x3D; e ^ x</div>
+            <ul>
+                <li class="parameter">
+                  x: The input NDArray.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.log" href="#dl.log">dl.log</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;unary_ops.ts#L76" target=_blank>&#x2F;src&#x2F;math&#x2F;unary_ops.ts</a><br>
+            <div class="documentation">Computes natural logarithm of the input NDArray element-wise. y &#x3D; ln(x)</div>
+            <ul>
+                <li class="parameter">
+                  x: The input NDArray.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.sqrt" href="#dl.sqrt">dl.sqrt</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;unary_ops.ts#L88" target=_blank>&#x2F;src&#x2F;math&#x2F;unary_ops.ts</a><br>
+            <div class="documentation">Computes square root of the input NDArray element-wise. y &#x3D; sqrt(x)</div>
+            <ul>
+                <li class="parameter">
+                  x: The input NDArray.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.square" href="#dl.square">dl.square</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;unary_ops.ts#L101" target=_blank>&#x2F;src&#x2F;math&#x2F;unary_ops.ts</a><br>
+            <div class="documentation">Computes square of &#x60;x&#x60; element-wise.</div>
+            <ul>
+                <li class="parameter">
+                  x: The input array.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.abs" href="#dl.abs">dl.abs</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;unary_ops.ts#L113" target=_blank>&#x2F;src&#x2F;math&#x2F;unary_ops.ts</a><br>
+            <div class="documentation">Computes absolute value element-wise.</div>
+            <ul>
+                <li class="parameter">
+                  x: The input NDArray.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.clip" href="#dl.clip">dl.clip</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;unary_ops.ts#L127" target=_blank>&#x2F;src&#x2F;math&#x2F;unary_ops.ts</a><br>
+            <div class="documentation">Clips values element-wise.</div>
+            <ul>
+                <li class="parameter">
+                  x: The input NDArray.
+                </li>
+                <li class="parameter">
+                  min: Lower-bound of range to be clipped to.
+                </li>
+                <li class="parameter">
+                  max: Upper-bound of range to be clipped to.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.relu" href="#dl.relu">dl.relu</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;unary_ops.ts#L142" target=_blank>&#x2F;src&#x2F;math&#x2F;unary_ops.ts</a><br>
+            <div class="documentation">Computes rectified linear element-wise, max(x, 0).</div>
+            <ul>
+                <li class="parameter">
+                  x: The input NDArray.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.elu" href="#dl.elu">dl.elu</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;unary_ops.ts#L155" target=_blank>&#x2F;src&#x2F;math&#x2F;unary_ops.ts</a><br>
+            <div class="documentation">Computes exponential linear element-wise</div>
+            <ul>
+                <li class="parameter">
+                  x: the input NDArray
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.selu" href="#dl.selu">dl.selu</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;unary_ops.ts#L175" target=_blank>&#x2F;src&#x2F;math&#x2F;unary_ops.ts</a><br>
+            <div class="documentation">Computes scaled exponential linear element-wise.</div>
+            <ul>
+                <li class="parameter">
+                  x: 
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.leakyRelu" href="#dl.leakyRelu">dl.leakyRelu</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;unary_ops.ts#L187" target=_blank>&#x2F;src&#x2F;math&#x2F;unary_ops.ts</a><br>
+            <div class="documentation">Computes leaky rectified linear element-wise</div>
+            <ul>
+                <li class="parameter">
+                  x: the input NDArray
+                </li>
+                <li class="parameter">
+                  alpha: scaling factor for negative values, defaults to 0.2
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.prelu" href="#dl.prelu">dl.prelu</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;unary_ops.ts#L200" target=_blank>&#x2F;src&#x2F;math&#x2F;unary_ops.ts</a><br>
+            <div class="documentation">Computes leaky rectified linear element-wise with parametric alphas</div>
+            <ul>
+                <li class="parameter">
+                  x: the input NDArray
+                </li>
+                <li class="parameter">
+                  alpha: scaling factor NDArray for negative values
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.sigmoid" href="#dl.sigmoid">dl.sigmoid</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;unary_ops.ts#L220" target=_blank>&#x2F;src&#x2F;math&#x2F;unary_ops.ts</a><br>
+            <div class="documentation">Computes sigmoid element-wise, y &#x3D; 1 &#x2F; (1 + exp(-x)).</div>
+            <ul>
+                <li class="parameter">
+                  x: The input NDArray.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.sin" href="#dl.sin">dl.sin</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;unary_ops.ts#L234" target=_blank>&#x2F;src&#x2F;math&#x2F;unary_ops.ts</a><br>
+            <div class="documentation">Computes sin of the input NDArray element-wise, y &#x3D; sin(x).</div>
+            <ul>
+                <li class="parameter">
+                  x: The input NDArray.
+
+TODO(smilkov): Fix dl.cos() and other ops that should return a float.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.cos" href="#dl.cos">dl.cos</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;unary_ops.ts#L246" target=_blank>&#x2F;src&#x2F;math&#x2F;unary_ops.ts</a><br>
+            <div class="documentation">Computes cos of the input NDArray element-wise, y &#x3D; cos(x).</div>
+            <ul>
+                <li class="parameter">
+                  x: The input NDArray.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.tan" href="#dl.tan">dl.tan</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;unary_ops.ts#L258" target=_blank>&#x2F;src&#x2F;math&#x2F;unary_ops.ts</a><br>
+            <div class="documentation">Computes tan of the input NDArray element-wise, y &#x3D; tan(x).</div>
+            <ul>
+                <li class="parameter">
+                  x: The input NDArray.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.asin" href="#dl.asin">dl.asin</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;unary_ops.ts#L270" target=_blank>&#x2F;src&#x2F;math&#x2F;unary_ops.ts</a><br>
+            <div class="documentation">Computes asin of the input NDArray element-wise, y &#x3D; asin(x).</div>
+            <ul>
+                <li class="parameter">
+                  x: The input NDArray.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.acos" href="#dl.acos">dl.acos</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;unary_ops.ts#L284" target=_blank>&#x2F;src&#x2F;math&#x2F;unary_ops.ts</a><br>
+            <div class="documentation">Computes acos of the input NDArray element-wise, y &#x3D; acos(x).</div>
+            <ul>
+                <li class="parameter">
+                  x: The input NDArray.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.atan" href="#dl.atan">dl.atan</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;unary_ops.ts#L298" target=_blank>&#x2F;src&#x2F;math&#x2F;unary_ops.ts</a><br>
+            <div class="documentation">Computes atan of the input NDArray element-wise, y &#x3D; atan(x).</div>
+            <ul>
+                <li class="parameter">
+                  x: The input NDArray.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.sinh" href="#dl.sinh">dl.sinh</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;unary_ops.ts#L310" target=_blank>&#x2F;src&#x2F;math&#x2F;unary_ops.ts</a><br>
+            <div class="documentation">Computes hyperbolic sin of the input NDArray element-wise, y &#x3D; sinh(x).</div>
+            <ul>
+                <li class="parameter">
+                  x: The input NDArray.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.cosh" href="#dl.cosh">dl.cosh</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;unary_ops.ts#L320" target=_blank>&#x2F;src&#x2F;math&#x2F;unary_ops.ts</a><br>
+            <div class="documentation">Computes hyperbolic cos of the input NDArray element-wise, y &#x3D; cosh(x).</div>
+            <ul>
+                <li class="parameter">
+                  x: The input NDArray.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.tanh" href="#dl.tanh">dl.tanh</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;unary_ops.ts#L330" target=_blank>&#x2F;src&#x2F;math&#x2F;unary_ops.ts</a><br>
+            <div class="documentation">Computes hyperbolic tangent of the input NDArray element-wise.</div>
+            <ul>
+                <li class="parameter">
+                  x: The input NDArray.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.step" href="#dl.step">dl.step</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;unary_ops.ts#L343" target=_blank>&#x2F;src&#x2F;math&#x2F;unary_ops.ts</a><br>
+            <div class="documentation">Computes step of the input NDArray element-wise,
+y&#x3D;1 if x&gt;0|alpha*x if x&lt;&#x3D;0.</div>
+            <ul>
+                <li class="parameter">
+                  x: The input NDArray.
+                </li>
+                <li class="parameter">
+                  alpha: The gradient when input is negative.
+                </li>
+            </ul>
+          </div>
+      </div>
+      <div class="subheading">
+        <h4>Matrices</h4>
+          <div class="method">
+            <h5># <a name="dl.matMul" href="#dl.matMul">dl.matMul</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;matmul.ts#L37" target=_blank>&#x2F;src&#x2F;math&#x2F;matmul.ts</a><br>
+            <div class="documentation">Computes the dot product of two matrices, A * B. These must be matrices,
+use matrixTimesVector and vectorTimesMatrix, dotProduct, and outerProduct
+in other cases.</div>
+            <ul>
+                <li class="parameter">
+                  a: First matrix in dot product operation.
+                </li>
+                <li class="parameter">
+                  b: Second matrix in dot product operation.
+                </li>
+                <li class="parameter">
+                  aOrientation: The MatrixOrientation of A. If using TRANSPOSED, will
+compute A^T * B.
+                </li>
+                <li class="parameter">
+                  bOrientation: The MatrixOrientation of B. If using TRANSPOSED, will
+compute A * B^T.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.vectorTimesMatrix" href="#dl.vectorTimesMatrix">dl.vectorTimesMatrix</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;matmul.ts#L83" target=_blank>&#x2F;src&#x2F;math&#x2F;matmul.ts</a><br>
+            <div class="documentation">Computes the dot product of a vector and a matrix, v * B.</div>
+            <ul>
+                <li class="parameter">
+                  v: The vector in dot product operation.
+                </li>
+                <li class="parameter">
+                  matrix: The matrix in dot product operation.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.matrixTimesVector" href="#dl.matrixTimesVector">dl.matrixTimesVector</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;matmul.ts#L106" target=_blank>&#x2F;src&#x2F;math&#x2F;matmul.ts</a><br>
+            <div class="documentation">Computes the dot product of a matrix and vector, A * v.</div>
+            <ul>
+                <li class="parameter">
+                  matrix: The matrix in dot product operation.
+                </li>
+                <li class="parameter">
+                  v: The vector in dot product operation.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.dotProduct" href="#dl.dotProduct">dl.dotProduct</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;matmul.ts#L131" target=_blank>&#x2F;src&#x2F;math&#x2F;matmul.ts</a><br>
+            <div class="documentation">Computes the dot product of two vectors, v1 * v2.</div>
+            <ul>
+                <li class="parameter">
+                  v1: The first vector in the dot product operation.
+                </li>
+                <li class="parameter">
+                  v2: The second vector in the dot product operation.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.outerProduct" href="#dl.outerProduct">dl.outerProduct</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;matmul.ts#L150" target=_blank>&#x2F;src&#x2F;math&#x2F;matmul.ts</a><br>
+            <div class="documentation">Computes the outer product of two vectors, v1 and v2.</div>
+            <ul>
+                <li class="parameter">
+                  v1: The first vector in the outer product operation.
+                </li>
+                <li class="parameter">
+                  v2: The second vector in the dot product operation.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.norm" href="#dl.norm">dl.norm</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;norm.ts#L51" target=_blank>&#x2F;src&#x2F;math&#x2F;norm.ts</a><br>
+            <div class="documentation">Computes the norm of scalar, vectors, and matrices.
+This function can compute several different vector norms (the 1-norm, the
+Euclidean or 2-norm, the inf-norm, and in general the p-norm for p &gt; 0)
+and matrix norms (Frobenius, 1-norm, and inf-norm).</div>
+            <ul>
+                <li class="parameter">
+                  x: The input array.
+                </li>
+                <li class="parameter">
+                  ord: Optional. Order of the norm. Supported norm types are
+following: ord         norm for matrices          norm for vectors
+-------------------------------------------------------
+&#39;euclidean&#39; Frobenius norm             2-norm
+‘fro’       Frobenius norm	            –
+Infinity    max(sum(abs(x), axis&#x3D;1))   max(abs(x))
+-Infinity   min(sum(abs(x), axis&#x3D;1))   min(abs(x))
+1           max(sum(abs(x), axis&#x3D;0))   sum(abs(x))
+2           -                          sum(abs(x)^2)^1&#x2F;2*
+                </li>
+                <li class="parameter">
+                  axis: Optional. If axis is null (the default), the input is
+considered a vector and a single vector norm is computed over the entire
+set of values in the NDArray, i.e. norm(x, ord) is equivalent
+to norm(x.reshape([-1]), ord). If axis is a integer, the input
+is considered a batch of vectors, and axis determines the axis in x
+over which to compute vector norms. If axis is a 2-tuple of integer it is
+considered a batch of matrices and axis determines the axes in NDArray
+over which to compute a matrix norm.
+                </li>
+                <li class="parameter">
+                  keepDims: Optional. If true, the norm have the same dimensionality
+as the input.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.transpose" href="#dl.transpose">dl.transpose</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;transpose.ts#L38" target=_blank>&#x2F;src&#x2F;math&#x2F;transpose.ts</a><br>
+            <div class="documentation">Transposes the array. Permutes the dimensions according to &#x60;perm&#x60;.
+
+The returned array&#39;s dimension &#x60;i&#x60; will correspond to the input dimension
+&#x60;perm[i]&#x60;. If &#x60;perm&#x60; is not given, it is set to &#x60;[n-1...0]&#x60;, where &#x60;n&#x60; is
+the rank of the input array. Hence by default, this operation performs a
+regular matrix transpose on 2-D input arrays.</div>
+            <ul>
+                <li class="parameter">
+                  x: The array to transpose.
+                </li>
+                <li class="parameter">
+                  perm: Optional. The permutation of the dimensions of a.
+                </li>
+            </ul>
+          </div>
+      </div>
+      <div class="subheading">
+        <h4>Convolution</h4>
+          <div class="method">
+            <h5># <a name="dl.conv1d" href="#dl.conv1d">dl.conv1d</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;conv.ts#L47" target=_blank>&#x2F;src&#x2F;math&#x2F;conv.ts</a><br>
+            <div class="documentation">Computes a 1D convolution over the input x.</div>
+            <ul>
+                <li class="parameter">
+                  input: The input ndarray, of rank 3 or rank 2, of shape
+&#x60;[batch, width, inChannels]&#x60;. If rank 2, batch of 1 is assumed.
+                </li>
+                <li class="parameter">
+                  filter: The filter, rank 3, of shape
+[filterWidth, inDepth, outDepth].
+                </li>
+                <li class="parameter">
+                  bias: Optional bias, rank 1 of shape [outDepth].
+                </li>
+                <li class="parameter">
+                  stride: The number of entries by which the filter is moved right at
+each step.
+                </li>
+                <li class="parameter">
+                  pad: A string from: &#39;same&#39;, &#39;valid&#39;. The type of padding algorithm.
+- &#39;same&#39; pad and stride 1: output will be of same size as input,
+regardless of filter size.
+- &#39;valid&#39; pad: output will be smaller than input if filter is larger
+than 1x1.
+- For more info, see this guide:
+https:&#x2F;&#x2F;www.tensorflow.org&#x2F;api_guides&#x2F;python&#x2F;nn#Convolution
+                </li>
+                <li class="parameter">
+                  dimRoundingMode: A string from: &#39;ceil&#39;, &#39;round&#39;, &#39;floor&#39;. The
+rounding mode used when computing output dimensions if pad is a
+number. If none is provided, it will not round and error if the output
+is of fractional size.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.conv2d" href="#dl.conv2d">dl.conv2d</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;conv.ts#L121" target=_blank>&#x2F;src&#x2F;math&#x2F;conv.ts</a><br>
+            <div class="documentation">Computes a 2D convolution over the input x.</div>
+            <ul>
+                <li class="parameter">
+                  x: The input ndarray, of rank 4 or rank 3, of shape
+&#x60;[batch, height, width, inChannels]&#x60;. If rank 3, batch of 1 is
+assumed.
+                </li>
+                <li class="parameter">
+                  filter: The filter, rank 4, of shape
+[filterHeight, filterWidth, inDepth, outDepth].
+                </li>
+                <li class="parameter">
+                  bias: Optional bias, rank 1 of shape [outDepth].
+                </li>
+                <li class="parameter">
+                  strides: The strides of the convolution: [strideHeight,
+strideWidth].
+                </li>
+                <li class="parameter">
+                  pad: A string from: &#39;same&#39;, &#39;valid&#39;. The type of padding algorithm.
+- &#39;same&#39; pad and stride 1: output will be of same size as input,
+regardless of filter size.
+- &#39;valid&#39; pad: output will be smaller than input if filter is larger
+than 1x1.
+- For more info, see this guide:
+https:&#x2F;&#x2F;www.tensorflow.org&#x2F;api_guides&#x2F;python&#x2F;nn#Convolution
+                </li>
+                <li class="parameter">
+                  dimRoundingMode: A string from: &#39;ceil&#39;, &#39;round&#39;, &#39;floor&#39;. The
+rounding mode used when computing output dimensions if pad is a
+number. If none is provided, it will not round and error if the output
+is of fractional size.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.conv2dDerInput" href="#dl.conv2dDerInput">dl.conv2dDerInput</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;conv.ts#L197" target=_blank>&#x2F;src&#x2F;math&#x2F;conv.ts</a><br>
+            <div class="documentation">Computes the derivative of the input of a 2D convolution.</div>
+            <ul>
+                <li class="parameter">
+                  xShape: The shape of the input: [batch, height, width, inDepth].
+If length of 3, batch of 1 is assumed.
+                </li>
+                <li class="parameter">
+                  dy: The derivative of the output, of rank 4 or rank 3 of shape
+[batch, outHeight, outWidth, outDepth]. If rank 3, batch of 1 is
+assumed.
+                </li>
+                <li class="parameter">
+                  filter: The filter, rank 4, of shape
+[filterHeight, filterWidth, inDepth, outDepth].
+                </li>
+                <li class="parameter">
+                  strides: The strides of the convolution: [strideHeight,
+strideWidth].
+                </li>
+                <li class="parameter">
+                  pad: A string from: &#39;same&#39;, &#39;valid&#39;. The type of padding algorithm
+used in the forward prop of the op.
+                </li>
+                <li class="parameter">
+                  dimRoundingMode: A string from: &#39;ceil&#39;, &#39;round&#39;, &#39;floor&#39;. The
+rounding mode used when computing output dimensions if pad is a
+number. If none is provided, it will not round and error if the output
+is of fractional size.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.conv2dTranspose" href="#dl.conv2dTranspose">dl.conv2dTranspose</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;conv.ts#L356" target=_blank>&#x2F;src&#x2F;math&#x2F;conv.ts</a><br>
+            <div class="documentation">Computes the transposed 2D convolution of an image, also known as a
+deconvolution.</div>
+            <ul>
+                <li class="parameter">
+                  x: The input image, of rank 4 or rank 3, of shape
+[batch, height, width, inDepth]. If rank 3, batch of 1 is assumed.
+                </li>
+                <li class="parameter">
+                  filter: The filter, rank 4, of shape
+&#x60;[filterHeight, filterWidth, outDepth, inDepth]&#x60;.
+&#x60;inDepth&#x60; must match &#x60;inDepth&#x60; in &#x60;x&#x60;.
+                </li>
+                <li class="parameter">
+                  outputShape: Output shape, of rank 4 or rank 3:
+[batch, height, width, outDepth]. If rank 3, batch of 1 is assumed.
+                </li>
+                <li class="parameter">
+                  strides: The strides of the original convolution:
+&#x60;[strideHeight, strideWidth]&#x60;.
+                </li>
+                <li class="parameter">
+                  pad: A string from: &#39;same&#39;, &#39;valid&#39;. The type of padding algorithm
+used in the non-transpose version of the op.
+                </li>
+                <li class="parameter">
+                  dimRoundingMode: A string from: &#39;ceil&#39;, &#39;round&#39;, &#39;floor&#39;. The
+rounding mode used when computing output dimensions if pad is a
+number. If none is provided, it will not round and error if the output
+is of fractional size.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.depthwiseConv2D" href="#dl.depthwiseConv2D">dl.depthwiseConv2D</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;conv.ts#L405" target=_blank>&#x2F;src&#x2F;math&#x2F;conv.ts</a><br>
+            <div class="documentation">Depthwise 2D convolution.
+
+Given a 4D &#x60;input&#x60; array and a &#x60;filter&#x60; array of shape
+&#x60;[filterHeight, filterWidth, inChannels, channelMultiplier]&#x60; containing
+&#x60;inChannels&#x60; convolutional filters of depth 1, this op applies a
+different filter to each input channel (expanding from 1 channel to
+&#x60;channelMultiplier&#x60; channels for each), then concatenates the results
+together. The output has &#x60;inChannels * channelMultiplier&#x60; channels.
+
+See https:&#x2F;&#x2F;www.tensorflow.org&#x2F;api_docs&#x2F;python&#x2F;tf&#x2F;nn&#x2F;depthwise_conv2d for
+more details.</div>
+            <ul>
+                <li class="parameter">
+                  input: The input ndarray, of rank 4 or rank 3, of shape
+&#x60;[batch, height, width, inChannels]&#x60;. If rank 3, batch of 1 is
+assumed.
+                </li>
+                <li class="parameter">
+                  filter: The filter ndarray, rank 4, of shape
+&#x60;[filterHeight, filterWidth, inChannels, channelMultiplier]&#x60;.
+                </li>
+                <li class="parameter">
+                  strides: The strides of the convolution: [strideHeight,
+strideWidth]. If strides is a single number, then &#x60;strideHeight &#x3D;&#x3D;
+strideWidth&#x60;.
+                </li>
+                <li class="parameter">
+                  pad: A string from: &#39;same&#39;, &#39;valid&#39;. The type of padding algorithm.
+- &#39;same&#39; pad and stride 1: output will be of same size as input,
+regardless of filter size.
+- &#39;valid&#39; pad: output will be smaller than input if filter is larger
+than 1x1.
+- For more info, see this guide:
+https:&#x2F;&#x2F;www.tensorflow.org&#x2F;api_guides&#x2F;python&#x2F;nn#Convolution
+                </li>
+                <li class="parameter">
+                  rates: The dilation rates: &#x60;[rateHeight, rateWidth]&#x60; in which we
+sample input values across the height and width dimensions in atrous
+convolution. Defaults to &#x60;[1, 1]&#x60;. If &#x60;rate&#x60; is a single number, then
+&#x60;rateHeight &#x3D;&#x3D; rateWidth&#x60;. If it is greater than 1, then all values
+of &#x60;strides&#x60; must be 1.
+                </li>
+                <li class="parameter">
+                  dimRoundingMode: A string from: &#39;ceil&#39;, &#39;round&#39;, &#39;floor&#39;. The
+rounding mode used when computing output dimensions if pad is a
+number. If none is provided, it will not round and error if the output
+is of fractional size.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.maxPool" href="#dl.maxPool">dl.maxPool</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;pool.ts#L45" target=_blank>&#x2F;src&#x2F;math&#x2F;pool.ts</a><br>
+            <div class="documentation">Computes the 2D max pooling of an image.</div>
+            <ul>
+                <li class="parameter">
+                  x: The input ndarray, of rank 4 or rank 3 of shape
+[batch, height, width, inChannels]. If rank 3, batch of 1 is assumed.
+                </li>
+                <li class="parameter">
+                  filterSize: The filter size, a tuple [filterHeight, filterWidth].
+                </li>
+                <li class="parameter">
+                  strides: The strides of the pooling: [strideHeight, strideWidth].
+                </li>
+                <li class="parameter">
+                  pad: A string from: &#39;same&#39;, &#39;valid&#39;. The type of padding algorithm.
+- &#39;same&#39; pad and stride 1: output will be of same size as input,
+regardless of filter size.
+- &#39;valid&#39; pad: output will be smaller than input if filter is larger
+than 1x1.
+- For more info, see this guide:
+https:&#x2F;&#x2F;www.tensorflow.org&#x2F;api_guides&#x2F;python&#x2F;nn#Convolution
+                </li>
+                <li class="parameter">
+                  dimRoundingMode: A string from: &#39;ceil&#39;, &#39;round&#39;, &#39;floor&#39;. The
+rounding mode used when computing output dimensions if pad is a
+number. If none is provided, it will not round and error if the output
+is of fractional size.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.minPool" href="#dl.minPool">dl.minPool</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;pool.ts#L160" target=_blank>&#x2F;src&#x2F;math&#x2F;pool.ts</a><br>
+            <div class="documentation">Computes the 2D min pooling of an image.</div>
+            <ul>
+                <li class="parameter">
+                  input: The input ndarray, of rank 4 or rank 3 of shape
+[batch, height, width, inChannels]. If rank 3, batch of 1 is assumed.
+                </li>
+                <li class="parameter">
+                  filterSize: The filter size, a tuple [filterHeight, filterWidth].
+                </li>
+                <li class="parameter">
+                  strides: The strides of the pooling: [strideHeight, strideWidth].
+                </li>
+                <li class="parameter">
+                  pad: A string from: &#39;same&#39;, &#39;valid&#39;. The type of padding algorithm.
+- &#39;same&#39; pad and stride 1: output will be of same size as input,
+regardless of filter size.
+- &#39;valid&#39; pad: output will be smaller than input if filter is larger
+than 1x1.
+- For more info, see this guide:
+https:&#x2F;&#x2F;www.tensorflow.org&#x2F;api_guides&#x2F;python&#x2F;nn#Convolution
+                </li>
+                <li class="parameter">
+                  dimRoundingMode: A string from: &#39;ceil&#39;, &#39;round&#39;, &#39;floor&#39;. The
+rounding mode used when computing output dimensions if pad is a
+number. If none is provided, it will not round and error if the output
+is of fractional size.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.avgPool" href="#dl.avgPool">dl.avgPool</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;pool.ts#L210" target=_blank>&#x2F;src&#x2F;math&#x2F;pool.ts</a><br>
+            <div class="documentation">Computes the 2D average pooling of an image.</div>
+            <ul>
+                <li class="parameter">
+                  x: The input ndarray, of rank 4 or rank 3 of shape
+[batch, height, width, inChannels]. If rank 3, batch of 1 is assumed.
+                </li>
+                <li class="parameter">
+                  filterSize: The filter size, a tuple [filterHeight, filterWidth].
+                </li>
+                <li class="parameter">
+                  strides: The strides of the pooling: [strideHeight, strideWidth].
+                </li>
+                <li class="parameter">
+                  pad: A string from: &#39;same&#39;, &#39;valid&#39;. The type of padding algorithm.
+- &#39;same&#39; pad and stride 1: output will be of same size as input,
+regardless of filter size.
+- &#39;valid&#39; pad: output will be smaller than input if filter is larger
+than 1x1.
+- For more info, see this guide:
+https:&#x2F;&#x2F;www.tensorflow.org&#x2F;api_guides&#x2F;python&#x2F;nn#Convolution
+                </li>
+                <li class="parameter">
+                  dimRoundingMode: A string from: &#39;ceil&#39;, &#39;round&#39;, &#39;floor&#39;. The
+rounding mode used when computing output dimensions if pad is a
+number. If none is provided, it will not round and error if the output
+is of fractional size.
+                </li>
+            </ul>
+          </div>
+      </div>
+      <div class="subheading">
+        <h4>Reduction</h4>
+          <div class="method">
+            <h5># <a name="dl.logSumExp" href="#dl.logSumExp">dl.logSumExp</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;reduction_ops.ts#L41" target=_blank>&#x2F;src&#x2F;math&#x2F;reduction_ops.ts</a><br>
+            <div class="documentation">Computes the log(sum(exp(elements across the reduction dimensions)).
+
+Reduces the input along the dimensions given in &#x60;axis&#x60;. Unless &#x60;keepDims&#x60;
+is true, the rank of the array is reduced by 1 for each entry in &#x60;axis&#x60;.
+If &#x60;keepDims&#x60; is true, the reduced dimensions are retained with length 1.
+If &#x60;axis&#x60; has no entries, all dimensions are reduced, and an array with a
+single element is returned.</div>
+            <ul>
+                <li class="parameter">
+                  input: The input NDArray.
+                </li>
+                <li class="parameter">
+                  axis: Optional. The dimension(s) to reduce. If null (the default),
+reduces all dimensions.
+                </li>
+                <li class="parameter">
+                  keepDims: Optional. If true, retains reduced dimensions with length
+of 1. Defaults to false.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.sum" href="#dl.sum">dl.sum</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;reduction_ops.ts#L74" target=_blank>&#x2F;src&#x2F;math&#x2F;reduction_ops.ts</a><br>
+            <div class="documentation">Computes the sum of elements across dimensions of an array.
+
+Reduces the input along the dimensions given in &#x60;axes&#x60;. Unless &#x60;keepDims&#x60;
+is true, the rank of the array is reduced by 1 for each entry in &#x60;axes&#x60;.
+If &#x60;keepDims&#x60; is true, the reduced dimensions are retained with length 1.
+If axes has no entries, all dimensions are reduced, and an array with a
+single element is returned.</div>
+            <ul>
+                <li class="parameter">
+                  x: The input array to compute the sum over.
+                </li>
+                <li class="parameter">
+                  axis: Optional. The dimension(s) to reduce. By default it reduces
+all dimensions.
+                </li>
+                <li class="parameter">
+                  keepDims: Optional. If true, retains reduced dimensions with size 1.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.mean" href="#dl.mean">dl.mean</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;reduction_ops.ts#L124" target=_blank>&#x2F;src&#x2F;math&#x2F;reduction_ops.ts</a><br>
+            <div class="documentation">Computes the mean of elements across dimensions of an array.
+
+Reduces &#x60;x&#x60; along the dimensions given in &#x60;axis&#x60;. Unless &#x60;keepDims&#x60; is
+true, the rank of the array is reduced by 1 for each entry in &#x60;axis&#x60;.
+If &#x60;keepDims&#x60; is true, the reduced dimensions are retained with length 1.
+If &#x60;axis&#x60; has no entries, all dimensions are reduced, and an array with a
+single element is returned.</div>
+            <ul>
+                <li class="parameter">
+                  x: The input array.
+                </li>
+                <li class="parameter">
+                  axis: Optional. The dimension(s) to reduce. By default it reduces
+all dimensions.
+                </li>
+                <li class="parameter">
+                  keepDims: Optional. If true, retains reduced dimensions with size 1.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.min" href="#dl.min">dl.min</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;reduction_ops.ts#L167" target=_blank>&#x2F;src&#x2F;math&#x2F;reduction_ops.ts</a><br>
+            <div class="documentation">Computes the minimum value from the input.
+
+Reduces the input along the dimensions given in &#x60;axes&#x60;. Unless &#x60;keepDims&#x60;
+is true, the rank of the array is reduced by 1 for each entry in &#x60;axes&#x60;.
+If &#x60;keepDims&#x60; is true, the reduced dimensions are retained with length 1.
+If &#x60;axes&#x60; has no entries, all dimensions are reduced, and an array with a
+single element is returned.</div>
+            <ul>
+                <li class="parameter">
+                  x: The input NDArray.
+                </li>
+                <li class="parameter">
+                  axis: Optional. The dimension(s) to reduce. By default it reduces
+all dimensions.
+                </li>
+                <li class="parameter">
+                  keepDims: Optional. If true, retains reduced dimensions with size 1.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.max" href="#dl.max">dl.max</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;reduction_ops.ts#L201" target=_blank>&#x2F;src&#x2F;math&#x2F;reduction_ops.ts</a><br>
+            <div class="documentation">Computes the maximum of elements across dimensions of an array.
+
+Reduces the input along the dimensions given in &#x60;axes&#x60;. Unless &#x60;keepDims&#x60;
+is true, the rank of the array is reduced by 1 for each entry in &#x60;axes&#x60;.
+If &#x60;keepDims&#x60; is true, the reduced dimensions are retained with length 1.
+If &#x60;axes&#x60; has no entries, all dimensions are reduced, and an array with a
+single element is returned.</div>
+            <ul>
+                <li class="parameter">
+                  x: The input array.
+                </li>
+                <li class="parameter">
+                  axis: Optional. The dimension(s) to reduce. By default it reduces
+all dimensions.
+                </li>
+                <li class="parameter">
+                  keepDims: Optional. If true, retains reduced dimensions with size 1.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.argMin" href="#dl.argMin">dl.argMin</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;reduction_ops.ts#L230" target=_blank>&#x2F;src&#x2F;math&#x2F;reduction_ops.ts</a><br>
+            <div class="documentation">Returns the indices of the minimum values along an &#x60;axis&#x60;. The result has
+the same shape as &#x60;input&#x60; with the dimension along &#x60;axis&#x60; removed.</div>
+            <ul>
+                <li class="parameter">
+                  x: The input array.
+                </li>
+                <li class="parameter">
+                  axis: Optional. The dimension to reduce. By default it reduces
+across all axes and returns the flat index.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.argMax" href="#dl.argMax">dl.argMax</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;reduction_ops.ts#L250" target=_blank>&#x2F;src&#x2F;math&#x2F;reduction_ops.ts</a><br>
+            <div class="documentation">Returns the indices of the maximum values along an &#x60;axis&#x60;. The result has
+the same shape as &#x60;input&#x60; with the dimension along &#x60;axis&#x60; removed.</div>
+            <ul>
+                <li class="parameter">
+                  x: The input array.
+                </li>
+                <li class="parameter">
+                  axis: Optional. The dimension to reduce. By default it reduces
+across all axes and returns the flat index
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.argMaxEquals" href="#dl.argMaxEquals">dl.argMaxEquals</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;reduction_ops.ts#L268" target=_blank>&#x2F;src&#x2F;math&#x2F;reduction_ops.ts</a><br>
+            <div class="documentation">Returns a 1 if the argMax of x1 and x2 are the same, otherwise 0.</div>
+            <ul>
+                <li class="parameter">
+                  x1: The first input NDArray.
+                </li>
+                <li class="parameter">
+                  x2: The second input NDArray.
+                </li>
+            </ul>
+          </div>
+      </div>
+      <div class="subheading">
+        <h4>Normalization</h4>
+          <div class="method">
+            <h5># <a name="dl.batchNormalization2D" href="#dl.batchNormalization2D">dl.batchNormalization2D</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;batchnorm.ts#L38" target=_blank>&#x2F;src&#x2F;math&#x2F;batchnorm.ts</a><br>
+            <div class="documentation">Batch normalization 2D. Mean, variance, scale, and offset can be of two
+shapes: 1) The same shape as the input: an Array2D. 2) In the common
+case, the depth dimension is the last dimension of x, so the values would
+be an Array1D of shape [depth].</div>
+            <ul>
+                <li class="parameter">
+                  x: The input NDArray.
+                </li>
+                <li class="parameter">
+                  mean: A mean NDArray.
+                </li>
+                <li class="parameter">
+                  variance: A variance NDArray.
+                </li>
+                <li class="parameter">
+                  varianceEpsilon: A small float number to avoid dividing by 0.
+                </li>
+                <li class="parameter">
+                  scale: A scale NDArray.
+                </li>
+                <li class="parameter">
+                  offset: An offset NDArray.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.batchNormalization3D" href="#dl.batchNormalization3D">dl.batchNormalization3D</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;batchnorm.ts#L87" target=_blank>&#x2F;src&#x2F;math&#x2F;batchnorm.ts</a><br>
+            <div class="documentation">Batch normalization 3D. Mean, variance, scale, and offset can be of two
+shapes: 1) The same shape as the input: an Array3D. 2) In the common
+case, the depth dimension is the last dimension of x, so the values would
+be an Array1D of shape [depth].</div>
+            <ul>
+                <li class="parameter">
+                  x: The input NDArray.
+                </li>
+                <li class="parameter">
+                  mean: A mean NDArray.
+                </li>
+                <li class="parameter">
+                  variance: A variance NDArray.
+                </li>
+                <li class="parameter">
+                  varianceEpsilon: A small float number to avoid dividing by 0.
+                </li>
+                <li class="parameter">
+                  scale: A scale NDArray.
+                </li>
+                <li class="parameter">
+                  offset: An offset NDArray.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.batchNormalization4D" href="#dl.batchNormalization4D">dl.batchNormalization4D</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;batchnorm.ts#L136" target=_blank>&#x2F;src&#x2F;math&#x2F;batchnorm.ts</a><br>
+            <div class="documentation">Batch normalization 4D. Mean, variance, scale, and offset can be of two
+shapes: 1) The same shape as the input: an Array4D. 2) In the common
+case, the depth dimension is the last dimension of x, so the values would
+be an Array1D of shape [depth].</div>
+            <ul>
+                <li class="parameter">
+                  x: The input NDArray.
+                </li>
+                <li class="parameter">
+                  mean: A mean NDArray.
+                </li>
+                <li class="parameter">
+                  variance: A variance NDArray.
+                </li>
+                <li class="parameter">
+                  varianceEpsilon: A small float number to avoid dividing by 0.
+                </li>
+                <li class="parameter">
+                  scale: A scale NDArray.
+                </li>
+                <li class="parameter">
+                  offset: An offset NDArray.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.batchNormalization" href="#dl.batchNormalization">dl.batchNormalization</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;batchnorm.ts#L173" target=_blank>&#x2F;src&#x2F;math&#x2F;batchnorm.ts</a><br>
+            <div class="documentation"></div>
+            <ul>
+                <li class="parameter">
+                  x: 
+                </li>
+                <li class="parameter">
+                  mean: 
+                </li>
+                <li class="parameter">
+                  variance: 
+                </li>
+                <li class="parameter">
+                  varianceEpsilon: 
+                </li>
+                <li class="parameter">
+                  scale: 
+                </li>
+                <li class="parameter">
+                  offset: 
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.moments" href="#dl.moments">dl.moments</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;reduction_ops.ts#L287" target=_blank>&#x2F;src&#x2F;math&#x2F;reduction_ops.ts</a><br>
+            <div class="documentation">Calculates the mean and variance of &#x60;x&#x60;. The mean and variance are
+calculated by aggregating the contents of &#x60;x&#x60; across &#x60;axes&#x60;. If &#x60;x&#x60; is
+1-D and &#x60;axes &#x3D; [0]&#x60; this is just the mean and variance of a vector.</div>
+            <ul>
+                <li class="parameter">
+                  x: The input array.
+                </li>
+                <li class="parameter">
+                  axis: Optional. The dimension(s) along with to compute mean and
+variance. By default it reduces all dimensions.
+                </li>
+                <li class="parameter">
+                  keepDims: If true, the moments have the same dimensionality as the
+input.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.softmax" href="#dl.softmax">dl.softmax</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;softmax.ts#L32" target=_blank>&#x2F;src&#x2F;math&#x2F;softmax.ts</a><br>
+            <div class="documentation">Computes the softmax normalized vector given the logits.</div>
+            <ul>
+                <li class="parameter">
+                  logits: The logits array.
+                </li>
+                <li class="parameter">
+                  dim: The dimension softmax would be performed on. Defaults to -1
+which indicates the last dimension.
+                </li>
+            </ul>
+          </div>
+      </div>
+      <div class="subheading">
+        <h4>Images</h4>
+          <div class="method">
+            <h5># <a name="dl.resizeBilinear" href="#dl.resizeBilinear">dl.resizeBilinear</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;image_ops.ts#L37" target=_blank>&#x2F;src&#x2F;math&#x2F;image_ops.ts</a><br>
+            <div class="documentation">Bilinear resize a batch of 3D images to a new shape.</div>
+            <ul>
+                <li class="parameter">
+                  images: The images, of rank 4 or rank 3, of shape
+&#x60;[batch, height, width, inChannels]&#x60;. If rank 3, batch of 1 is assumed.
+                </li>
+                <li class="parameter">
+                  size: The new shape &#x60;[newHeight, newWidth]&#x60; to resize the
+images to. Each channel is resized individually.
+                </li>
+                <li class="parameter">
+                  alignCorners: An optional bool. Defaults to False. If true, rescale
+input by (new_height - 1) &#x2F; (height - 1), which exactly aligns the 4
+corners of images and resized images. If false, rescale by
+new_height&#x2F;height. Treat similarly the width dimension.
+                </li>
+            </ul>
+          </div>
+      </div>
+      <div class="subheading">
+        <h4>RNN</h4>
+          <div class="method">
+            <h5># <a name="dl.multiRNNCell" href="#dl.multiRNNCell">dl.multiRNNCell</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;lstm.ts#L37" target=_blank>&#x2F;src&#x2F;math&#x2F;lstm.ts</a><br>
+            <div class="documentation">Computes the next states and outputs of a stack of LSTMCells.
+Each cell output is used as input to the next cell.
+This is only the forward mode.
+Derived from tf.contrib.rn.MultiRNNCell.</div>
+            <ul>
+                <li class="parameter">
+                  lstmCells: Array of LSTMCell functions.
+                </li>
+                <li class="parameter">
+                  data: The input to the cell.
+                </li>
+                <li class="parameter">
+                  c: Array of previous cell states.
+                </li>
+                <li class="parameter">
+                  h: Array of previous cell outputs.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.basicLSTMCell" href="#dl.basicLSTMCell">dl.basicLSTMCell</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;lstm.ts#L71" target=_blank>&#x2F;src&#x2F;math&#x2F;lstm.ts</a><br>
+            <div class="documentation">Computes the next state and output of a BasicLSTMCell.
+This is only the forward mode.
+Derived from tf.contrib.rnn.BasicLSTMCell.</div>
+            <ul>
+                <li class="parameter">
+                  forgetBias: Forget bias for the cell.
+                </li>
+                <li class="parameter">
+                  lstmKernel: The weights for the cell.
+                </li>
+                <li class="parameter">
+                  lstmBias: The bias for the cell.
+                </li>
+                <li class="parameter">
+                  data: The input to the cell.
+                </li>
+                <li class="parameter">
+                  c: Previous cell state.
+                </li>
+                <li class="parameter">
+                  h: Previous cell output.
+                </li>
+            </ul>
+          </div>
+      </div>
+      <div class="subheading">
+        <h4>Classification</h4>
+          <div class="method">
+            <h5># <a name="dl.softmaxCrossEntropy" href="#dl.softmaxCrossEntropy">dl.softmaxCrossEntropy</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;softmax.ts#L89" target=_blank>&#x2F;src&#x2F;math&#x2F;softmax.ts</a><br>
+            <div class="documentation">Computes softmax cross entropy between logits and labels.
+
+Measures the probability error in discrete classification tasks in which
+the classes are mutually exclusive (each entry is in exactly one class).
+For example, each CIFAR-10 image is labeled with one and only one label: an
+image can be a dog or a truck, but not both.
+
+NOTE: While the classes are mutually exclusive, their probabilities need
+not be. All that is required is that each row of labels is a valid
+probability distribution. If they are not, the computation of the gradient
+will be incorrect.
+
+WARNING: This op expects unscaled logits, since it performs a softmax on
+logits internally for efficiency. Do not call this op with the output of
+softmax, as it will produce incorrect results.
+
+logits and labels must have the same shape, e.g. [batch_size, num_classes]
+and the same dtype.</div>
+            <ul>
+                <li class="parameter">
+                  labels: The labels array.
+                </li>
+                <li class="parameter">
+                  logits: The logits array.
+                </li>
+                <li class="parameter">
+                  dim: The dimension softmax would be performed on. Defaults to -1
+which indicates the last dimension.
+                </li>
+            </ul>
+          </div>
+      </div>
+      <div class="subheading">
+        <h4>Logical</h4>
+          <div class="method">
+            <h5># <a name="dl.notEqual" href="#dl.notEqual">dl.notEqual</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;compare.ts#L33" target=_blank>&#x2F;src&#x2F;math&#x2F;compare.ts</a><br>
+            <div class="documentation">Returns the truth value of (a !&#x3D; b) element-wise. Supports broadcasting.
+For a stricter version without broadcasting use math.notEqualStrict().</div>
+            <ul>
+                <li class="parameter">
+                  a: The first input &#x60;NDArray&#x60;.
+                </li>
+                <li class="parameter">
+                  b: The second input &#x60;NDArray&#x60;. Must have the same dtype as &#x60;a&#x60;.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.notEqualStrict" href="#dl.notEqualStrict">dl.notEqualStrict</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;compare.ts#L41" target=_blank>&#x2F;src&#x2F;math&#x2F;compare.ts</a><br>
+            <div class="documentation"></div>
+            <ul>
+                <li class="parameter">
+                  a: 
+                </li>
+                <li class="parameter">
+                  b: 
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.less" href="#dl.less">dl.less</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;compare.ts#L55" target=_blank>&#x2F;src&#x2F;math&#x2F;compare.ts</a><br>
+            <div class="documentation">Returns the truth value of (a &lt; b) element-wise. Supports broadcasting.
+For a stricter version without broadcasting use math.lessStrict().</div>
+            <ul>
+                <li class="parameter">
+                  a: The first input &#x60;NDArray&#x60;.
+                </li>
+                <li class="parameter">
+                  b: The second input &#x60;NDArray&#x60;. Must have the same dtype as &#x60;a&#x60;.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.lessStrict" href="#dl.lessStrict">dl.lessStrict</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;compare.ts#L63" target=_blank>&#x2F;src&#x2F;math&#x2F;compare.ts</a><br>
+            <div class="documentation"></div>
+            <ul>
+                <li class="parameter">
+                  a: 
+                </li>
+                <li class="parameter">
+                  b: 
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.equal" href="#dl.equal">dl.equal</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;compare.ts#L77" target=_blank>&#x2F;src&#x2F;math&#x2F;compare.ts</a><br>
+            <div class="documentation">Returns the truth value of (a &#x3D;&#x3D; b) element-wise. Supports broadcasting.
+For a stricter version without broadcasting use math.equalStrict().</div>
+            <ul>
+                <li class="parameter">
+                  a: The first input &#x60;NDArray&#x60;.
+                </li>
+                <li class="parameter">
+                  b: The second input &#x60;NDArray&#x60;. Must have the same dtype as &#x60;a&#x60;.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.equalStrict" href="#dl.equalStrict">dl.equalStrict</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;compare.ts#L85" target=_blank>&#x2F;src&#x2F;math&#x2F;compare.ts</a><br>
+            <div class="documentation"></div>
+            <ul>
+                <li class="parameter">
+                  a: 
+                </li>
+                <li class="parameter">
+                  b: 
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.lessEqual" href="#dl.lessEqual">dl.lessEqual</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;compare.ts#L99" target=_blank>&#x2F;src&#x2F;math&#x2F;compare.ts</a><br>
+            <div class="documentation">Returns the truth value of (a &lt;&#x3D; b) element-wise. Supports broadcasting.
+For a stricter version without broadcasting use math.lessEqualStrict().</div>
+            <ul>
+                <li class="parameter">
+                  a: The first input &#x60;NDArray&#x60;.
+                </li>
+                <li class="parameter">
+                  b: The second input &#x60;NDArray&#x60;. Must have the same dtype as &#x60;a&#x60;.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.lessEqualStrict" href="#dl.lessEqualStrict">dl.lessEqualStrict</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;compare.ts#L107" target=_blank>&#x2F;src&#x2F;math&#x2F;compare.ts</a><br>
+            <div class="documentation"></div>
+            <ul>
+                <li class="parameter">
+                  a: 
+                </li>
+                <li class="parameter">
+                  b: 
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.greater" href="#dl.greater">dl.greater</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;compare.ts#L121" target=_blank>&#x2F;src&#x2F;math&#x2F;compare.ts</a><br>
+            <div class="documentation">Returns the truth value of (a &gt; b) element-wise. Supports broadcasting.
+For a stricter version without broadcasting use math.greaterStrict().</div>
+            <ul>
+                <li class="parameter">
+                  a: The first input &#x60;NDArray&#x60;.
+                </li>
+                <li class="parameter">
+                  b: The second input &#x60;NDArray&#x60;. Must have the same dtype as &#x60;a&#x60;.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.greaterStrict" href="#dl.greaterStrict">dl.greaterStrict</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;compare.ts#L129" target=_blank>&#x2F;src&#x2F;math&#x2F;compare.ts</a><br>
+            <div class="documentation"></div>
+            <ul>
+                <li class="parameter">
+                  a: 
+                </li>
+                <li class="parameter">
+                  b: 
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.greaterEqual" href="#dl.greaterEqual">dl.greaterEqual</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;compare.ts#L143" target=_blank>&#x2F;src&#x2F;math&#x2F;compare.ts</a><br>
+            <div class="documentation">Returns the truth value of (a &gt;&#x3D; b) element-wise. Supports broadcasting.
+For a stricter version without broadcasting use math.greaterEqualStrict().</div>
+            <ul>
+                <li class="parameter">
+                  a: The first input &#x60;NDArray&#x60;.
+                </li>
+                <li class="parameter">
+                  b: The second input &#x60;NDArray&#x60;. Must have the same dtype as &#x60;a&#x60;.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.greaterEqualStrict" href="#dl.greaterEqualStrict">dl.greaterEqualStrict</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;compare.ts#L151" target=_blank>&#x2F;src&#x2F;math&#x2F;compare.ts</a><br>
+            <div class="documentation"></div>
+            <ul>
+                <li class="parameter">
+                  a: 
+                </li>
+                <li class="parameter">
+                  b: 
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.logicalAnd" href="#dl.logicalAnd">dl.logicalAnd</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;logical_ops.ts#L34" target=_blank>&#x2F;src&#x2F;math&#x2F;logical_ops.ts</a><br>
+            <div class="documentation">Returns the truth value of a AND b element-wise. Supports broadcasting.</div>
+            <ul>
+                <li class="parameter">
+                  a: The first input &#x60;NDArray&#x60;.
+                </li>
+                <li class="parameter">
+                  b: The second input &#x60;NDArray&#x60;.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.logicalOr" href="#dl.logicalOr">dl.logicalOr</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;logical_ops.ts#L50" target=_blank>&#x2F;src&#x2F;math&#x2F;logical_ops.ts</a><br>
+            <div class="documentation">Returns the truth value of a OR b element-wise. Supports broadcasting.</div>
+            <ul>
+                <li class="parameter">
+                  a: The first input &#x60;NDArray&#x60;.
+                </li>
+                <li class="parameter">
+                  b: The second input &#x60;NDArray&#x60;.
+                </li>
+            </ul>
+          </div>
+          <div class="method">
+            <h5># <a name="dl.where" href="#dl.where">dl.where</a></h5>
+            Defined in <a href="https:&#x2F;&#x2F;github.com&#x2F;PAIR-code&#x2F;deeplearnjs&#x2F;blob&#x2F;master&#x2F;src&#x2F;math&#x2F;logical_ops.ts#L70" target=_blank>&#x2F;src&#x2F;math&#x2F;logical_ops.ts</a><br>
+            <div class="documentation">Returns the elements, either &#x60;a&#x60; or &#x60;b&#x60; depending on the &#x60;condition&#x60;.</div>
+            <ul>
+                <li class="parameter">
+                  condition: The input as &#x60;NDAray&lt;&#39;bool&#39;&gt;.
+                </li>
+                <li class="parameter">
+                  a: Input as &#x60;NDArray&#x60; which may have the same shape as
+&#x60;condition&#x60;. If &#x60;condition&#x60; is rank 1, &#x60;a&#x60; may have a higher rank but
+its first dimension must match the size of &#x60;condition&#x60;.
+                </li>
+                <li class="parameter">
+                  b: Input as &#x60;NDArray&#x60; with the same shape and type as &#x60;a&#x60;.
+                </li>
+            </ul>
+          </div>
+      </div>
+  </div>
