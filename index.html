@@ -41,15 +41,16 @@
     }
   };
 
-  var word = "Nikhil";
-
+  var letters = Object.keys(letterVectors);
+  var word = letters.join('');
+  
   // Count total vectors, assume same length.
-  var totalLength = 0;
-  var totalWidth = 0;
-  for (var j = 0; j < word.length; j++) {
-    totalLength += letterVectors[word[j]].vectors.length
-    totalWidth += letterVectors[word[j]].width;
-  }
+  var totalLength = letters.reduce(function (length, letter) {
+    return length + letterVectors[letter].vectors.length
+  }, 0);
+  var totalWidth = letters.reduce(function (width, letter) {
+    return width + letterVectors[letter].width;
+  }, 0);
 
   // Constants.
   var usableWidth = Math.min(window.innerWidth, 800);
